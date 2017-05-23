@@ -1,0 +1,24 @@
+{
+  "name": "Liquid",
+  "version": "1.0.0",
+  "description": "A PWA game to connect the dots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateekbh/Liquid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prateekbh/Liquid/issues"
+  },
+  "homepage": "https://github.com/prateekbh/Liquid#readme",
+  "devDependencies": {
+    "preact": "^8.1.0",
+    "preact-router": "^2.5.2"
+  }
+}
