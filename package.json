@@ -43,5 +43,9 @@
     "preact-router": "^2.5.2",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.0"
+  },
+  "dependencies": {
+    "preact-css-transition-group": "^1.2.0",
+    "preact-transition-group": "^1.1.1"
   }
 }

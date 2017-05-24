@@ -1,0 +1,33 @@
+.box{
+	display: inline-block;
+	background-color: #000;
+	width:200px;
+	height: 200px;
+}
+
+.example-enter {
+	transform: translateX(50%);
+  opacity: 0;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+	transform: translateX(0%);
+  transition: all 300ms;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+	transform: translateX(-100%);
+  opacity: 0;
+  transition: all 100ms;
+}
+
+.page{
+	position: absolute;
+	top:20px;
+	left:0;
+}
