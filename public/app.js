@@ -9,7 +9,7 @@ webpackJsonp([0],[
 /* unused harmony export route */
 /* unused harmony export Router */
 /* unused harmony export Route */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Link; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Link; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 
@@ -380,7 +380,7 @@ Router.Router = Router;
 Router.Route = Route;
 Router.Link = Link;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Router);
+/* harmony default export */ __webpack_exports__["a"] = (Router);
 //# sourceMappingURL=preact-router.es.js.map
 
 /***/ }),
@@ -448,7 +448,7 @@ var Home = function (_Component) {
 					'This is the Home component.'
 				),
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* Link */],
+					__WEBPACK_IMPORTED_MODULE_1_preact_router__["b" /* Link */],
 					{ href: '/profile' },
 					'profile'
 				)
@@ -495,13 +495,12 @@ var LiquidRoute = function (_Component) {
 	_createClass(LiquidRoute, [{
 		key: 'render',
 		value: function render() {
-			console.log(this.props.keys);
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
 				null,
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_2__LiquidContainer_jsx__["a" /* default */],
-					{ key: this.props.keys },
+					{ key: this.props.url },
 					this.props.children
 				)
 			);
@@ -682,8 +681,8 @@ var App = function (_Component) {
 	}
 
 	_createClass(App, [{
-		key: 'render',
-		value: function render() {
+		key: 'rendera',
+		value: function rendera() {
 			var _this2 = this;
 
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
@@ -720,6 +719,24 @@ var App = function (_Component) {
 						{ keys: 'profile' },
 						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */], null)
 					)
+				)
+			);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+				__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* default */],
+				null,
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+					__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */],
+					{ path: '/' },
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */], null)
+				),
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+					__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */],
+					{ path: '/profile' },
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */], null)
 				)
 			);
 		}

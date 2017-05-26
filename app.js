@@ -15,7 +15,7 @@ class App extends Component{
 			url: 'Home'
 		};
 	}
-	render() {
+	rendera() {
 		return(
 			<div>
 				<button onClick={()=>{
@@ -38,6 +38,18 @@ class App extends Component{
 				</div>
 
 			</div>
+		);
+	}
+	render() {
+		return(
+			<Router>
+				<LiquidRoute path="/">
+					<Home/>
+				</LiquidRoute>
+				<LiquidRoute path="/profile">
+					<Profile/>
+				</LiquidRoute>
+			</Router>
 		);
 	}
 }
