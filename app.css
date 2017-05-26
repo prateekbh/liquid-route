@@ -12,4 +12,10 @@ body{
 	left: 0;
 	top: 20px;
 	width:100%;
+	will-change: transform, opacity;
+}
+
+.page{
+	height: 100vh;
+	background-color: #aed;
 }

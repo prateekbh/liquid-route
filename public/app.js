@@ -436,37 +436,21 @@ var Home = function (_Component) {
 		value: function render() {
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				'div',
-				null,
+				{ className: 'page' },
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'h1',
-						{ onClick: this.toggleBox.bind(this) },
-						'Home'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'p',
-						null,
-						'This is the Home component.'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* Link */],
-						{ href: '/profile' },
-						'profile'
-					)
+					'h1',
+					{ onClick: this.toggleBox.bind(this) },
+					'Home'
 				),
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
+					'p',
 					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group___default.a,
-						{
-							transitionName: 'example',
-							transitionEnterTimeout: 500,
-							transitionLeaveTimeout: 300 },
-						this.state.showBox && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_2__Box_jsx__["a" /* default */], { key: 'a' })
-					)
+					'This is the Home component.'
+				),
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* Link */],
+					{ href: '/profile' },
+					'profile'
 				)
 			);
 		}
@@ -560,7 +544,7 @@ var Profile = function (_Component) {
 		value: function render() {
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				'div',
-				null,
+				{ className: 'page' },
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					'h1',
 					null,
@@ -646,7 +630,7 @@ var Box = function (_Component) {
 	return Box;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (Box);
+/* unused harmony default export */ var _unused_webpack_default_export = (Box);
 
 /***/ }),
 /* 9 */
@@ -706,7 +690,7 @@ var App = function (_Component) {
 				'div',
 				null,
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'span',
+					'button',
 					{ onClick: function onClick() {
 							_this2.setState({
 								url: 'Home'
@@ -715,7 +699,7 @@ var App = function (_Component) {
 					'Home'
 				),
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'span',
+					'button',
 					{ onClick: function onClick() {
 							_this2.setState({
 								url: 'Profile'
@@ -1691,28 +1675,38 @@ var LiquidContainer = function (_Component) {
 	_createClass(LiquidContainer, [{
 		key: 'componentWillEnter',
 		value: function componentWillEnter(cb) {
-			var anim = this.container.animate([{
-				transform: 'translateX(100%)'
+			if (!this.container.animate) {
+				return cb();
+			}
+
+			this.container.animate([{
+				transform: 'translateX(100%)',
+				opacity: 0
 			}, {
-				transform: 'translateX(0%)'
+				transform: 'translateX(0%)',
+				opacity: 1
 			}], {
-				duration: 300, fill: 'forwards'
-			});
-			anim.onfinish = function () {
+				duration: 240, fill: 'forwards', easing: 'ease-in'
+			}).onfinish = function () {
 				cb();
 			};
 		}
 	}, {
 		key: 'componentWillLeave',
 		value: function componentWillLeave(cb) {
-			var anim = this.container.animate([{
-				transform: 'translateX(0%)'
+			if (!this.container.animate) {
+				return cb();
+			}
+
+			this.container.animate([{
+				transform: 'translateX(0%)',
+				opacity: 1
 			}, {
-				transform: 'translateX(-100%)'
+				transform: 'translateX(-100%)',
+				opacity: 0
 			}], {
-				duration: 300, fill: 'forwards'
-			});
-			anim.onfinish = function () {
+				duration: 240, fill: 'forwards', easing: 'ease-out'
+			}).onfinish = function () {
 				cb();
 			};
 		}

@@ -18,20 +18,20 @@ class App extends Component{
 	render() {
 		return(
 			<div>
-				<span onClick={()=>{
+				<button onClick={()=>{
 					this.setState({
 						url: 'Home'
 					});
 				}}>
 					Home
-				</span>
-				<span onClick={()=>{
+				</button>
+				<button onClick={()=>{
 					this.setState({
 						url: 'Profile'
 					});
 				}}>
 					Profile
-				</span>
+				</button>
 				<div className="app-page">
 					{this.state.url==='Home' && <LiquidRoute keys='home'><Home/></LiquidRoute>}
 					{this.state.url==='Profile' && <LiquidRoute keys='profile'><Profile /></LiquidRoute>}

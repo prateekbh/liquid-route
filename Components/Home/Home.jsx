@@ -17,20 +17,10 @@ export default class Home extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<div>
+			<div className='page'>
 					<h1 onClick={this.toggleBox.bind(this)}>Home</h1>
 					<p>This is the Home component.</p>
 					<Link href='/profile'>profile</Link>
-				</div>
-				<div>
-					 <CSSTransitionGroup
-							transitionName="example"
-							transitionEnterTimeout={500}
-							transitionLeaveTimeout={300}>
-					   {this.state.showBox && <Box key='a'/>}
-					 </CSSTransitionGroup>
-				</div>
 			</div>
 		);
 	}
