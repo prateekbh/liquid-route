@@ -6,3 +6,10 @@ body{
 .app-page{
 	position: relative;
 }
+
+.lqd-container{
+	position: absolute;
+	left: 0;
+	top: 20px;
+	width:100%;
+}

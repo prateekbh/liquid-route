@@ -1,17 +1,15 @@
 import { h, Component } from 'preact';
-import CSSTransitionGroup from 'preact-css-transition-group';
+import TransitionGroup from 'preact-transition-group';
+import LiquidContainer from './LiquidContainer.jsx';
 export default class LiquidRoute extends Component {
 	render() {
 		console.log(this.props.keys);
 		return (
-				<CSSTransitionGroup
-					transitionName="example"
-					transitionEnterTimeout={300}
-					transitionLeaveTimeout={100}>
-					<div key={this.props.keys} class='page'>
+				<TransitionGroup>
+					<LiquidContainer key={this.props.keys}>
 						{this.props.children}
-					</div>
-				</CSSTransitionGroup>
+					</LiquidContainer>
+				</TransitionGroup>
 		);
 	}
 }

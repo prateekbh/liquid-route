@@ -379,6 +379,13 @@ body{
 
 .app-page{
 	position: relative;
+}
+
+.lqd-container{
+	position: absolute;
+	left: 0;
+	top: 20px;
+	width:100%;
 }.box{
 	display: inline-block;
 	background-color: #000;
@@ -386,29 +393,53 @@ body{
 	height: 200px;
 }
 
-.example-enter {
-	transform: translateX(50%);
-  opacity: 0;
+.enter {
+	animation-name: enter;
+  animation-duration: 300ms;
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-	transform: translateX(0%);
-  transition: all 300ms;
+.leave {
+	animation-name: leave;
+  animation-duration: 300ms;
 }
 
-.example-leave {
-  opacity: 1;
+
+@keyframes enter {
+    from {
+			opacity: 0;
+		}
+    to {
+			opacity: 1;
+		}
 }
 
-.example-leave.example-leave-active {
-	transform: translateX(-100%);
-  opacity: 0;
-  transition: all 100ms;
+@keyframes leave {
+    from {
+			opacity: 1;
+		}
+    to {
+			opacity: 0;
+		}
 }
 
-.page{
-	position: absolute;
-	top:20px;
-	left:0;
+@keyframes enter-swipe {
+    from {
+			transform: translateX(100%);
+			opacity: 0;
+		}
+    to {
+			transform: translateX(0%);
+			opacity: 1;
+		}
+}
+
+@keyframes leave-swipe {
+    from {
+			transform: translateX(0%);
+			opacity: 1;
+		}
+    to {
+			transform: translateX(-100%);
+			opacity: 0;
+		}
 }
