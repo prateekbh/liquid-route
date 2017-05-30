@@ -15,41 +15,18 @@ class App extends Component{
 			url: 'Home'
 		};
 	}
-	rendera() {
-		return(
-			<div>
-				<button onClick={()=>{
-					this.setState({
-						url: 'Home'
-					});
-				}}>
-					Home
-				</button>
-				<button onClick={()=>{
-					this.setState({
-						url: 'Profile'
-					});
-				}}>
-					Profile
-				</button>
-				<div className="app-page">
-					{this.state.url==='Home' && <LiquidRoute keys='home'><Home/></LiquidRoute>}
-					{this.state.url==='Profile' && <LiquidRoute keys='profile'><Profile /></LiquidRoute>}
-				</div>
-
-			</div>
-		);
-	}
 	render() {
 		return(
-			<Router>
-				<LiquidRoute path="/">
-					<Home/>
-				</LiquidRoute>
-				<LiquidRoute path="/profile">
-					<Profile/>
-				</LiquidRoute>
-			</Router>
+			<div style="position:relative">
+				<Router>
+					<LiquidRoute path="/">
+						<Home/>
+					</LiquidRoute>
+					<LiquidRoute path="/profile">
+						<Profile/>
+					</LiquidRoute>
+				</Router>
+			</div>
 		);
 	}
 }

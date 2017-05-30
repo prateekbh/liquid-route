@@ -1,5 +1,5 @@
 {
-  "name": "Liquid",
+  "name": "liquid-routes",
   "version": "1.0.0",
   "description": "This library WILL contain what will make animated routes with preact-router as easy as Dwayne The Rock Johnson giving Rockbottom.",
   "main": "index.js",
