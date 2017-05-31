@@ -18,8 +18,8 @@ class App extends Component{
 		return(
 			<div style="position:relative">
 				<Router>
-					<LiquidRoute path="/" component={Home}/>
-					<LiquidRoute animation={Animations.Pop} path="/profile" component={Profile}/>
+					<LiquidRoute animation={Animations.Pop} path="/" component={Home}/>
+					<LiquidRoute animation={Animations.SlideLeft} path="/profile" component={Profile}/>
 				</Router>
 			</div>
 		);

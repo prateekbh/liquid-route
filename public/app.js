@@ -474,6 +474,7 @@ var Home = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__ = __webpack_require__(24);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -488,6 +489,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+var Animations = {
+	Fade: 'Fade',
+	SlideLeft: 'SlideLeft',
+	Pop: 'Pop',
+	None: 'None'
+};
+
+var currentAnimation = Animations.None;
+
 var LiquidRoute = function (_Component) {
 	_inherits(LiquidRoute, _Component);
 
@@ -498,34 +509,70 @@ var LiquidRoute = function (_Component) {
 	}
 
 	_createClass(LiquidRoute, [{
-		key: 'makeAnimationGroup',
-		value: function makeAnimationGroup(props) {
-			if (!props.animation) {
+		key: 'makeEntryAnimationGroup',
+		value: function makeEntryAnimationGroup(props) {
+			if (props.animation === Animations.Fade) {
 				return {
-					enterAnimationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */],
-					enterAnimationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */],
-					leaveAnimationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */],
-					leaveAnimationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */]
+					animationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */],
+					animationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */]
 				};
 			} else if (props.animation === Animations.Pop) {
 				return {
-					enterAnimationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */],
-					enterAnimationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */],
-					leaveAnimationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */],
-					leaveAnimationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */]
+					animationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */],
+					animationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */]
+				};
+			} else if (props.animation === Animations.SlideLeft) {
+				return {
+					animationStart: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["a" /* slideLeftEntryAnimationStart */],
+					animationEnd: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["b" /* slideLeftEntryAnimationEnd */]
 				};
 			}
 		}
 	}, {
+		key: 'getExitAnimationGroup',
+		value: function getExitAnimationGroup(props) {
+			if (currentAnimation === Animations.Fade) {
+				return {
+					animationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */],
+					animationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */]
+				};
+			} else if (currentAnimation === Animations.Pop) {
+				return {
+					animationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */],
+					animationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */]
+				};
+			} else if (currentAnimation === Animations.SlideLeft) {
+				return {
+					animationStart: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["c" /* slideLeftExitAnimationStart */],
+					animationEnd: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["d" /* slideLeftExitAnimationEnd */]
+				};
+			}
+		}
+	}, {
+		key: 'setCurrentAnimation',
+		value: function setCurrentAnimation() {
+			currentAnimation = this.props.animation;
+		}
+	}, {
 		key: 'render',
 		value: function render(props) {
-			var routeAnimations = this.makeAnimationGroup(props);
+			var _this2 = this;
+
+			var entryAnimations = this.makeEntryAnimationGroup(props);
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
 				null,
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
-					{ routeAnimations: routeAnimations, key: props.url },
+					{
+						entryAnimations: entryAnimations,
+						getExitAnimations: function getExitAnimations() {
+							return _this2.getExitAnimationGroup();
+						},
+						key: props.url,
+						onSetCurrentAnimation: function onSetCurrentAnimation() {
+							_this2.setCurrentAnimation();
+						} },
 					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(props.component, props)
 				)
 			);
@@ -537,12 +584,6 @@ var LiquidRoute = function (_Component) {
 
 /* harmony default export */ __webpack_exports__["a"] = (LiquidRoute);
 
-
-var Animations = {
-	Fade: 'Fade',
-	Slide: 'Slide',
-	Pop: 'Pop'
-};
 
 
 
@@ -734,12 +775,12 @@ var LiquidAnimator = function (_Component) {
 	_createClass(LiquidAnimator, [{
 		key: 'componentWillEnter',
 		value: function componentWillEnter(cb) {
-			var animationGroup = this.props.routeAnimations;
+			this.props.onSetCurrentAnimation();
+			var animationGroup = this.props.entryAnimations;
 			if (!this.container.animate) {
 				return cb();
 			}
-			console.log(animationGroup.enterAnimationStart);
-			this.container.animate([animationGroup.enterAnimationStart, animationGroup.enterAnimationEnd], {
+			this.container.animate([animationGroup.animationStart, animationGroup.animationEnd], {
 				duration: 240, fill: 'forwards', easing: 'ease-in'
 			}).onfinish = function () {
 				cb();
@@ -748,11 +789,11 @@ var LiquidAnimator = function (_Component) {
 	}, {
 		key: 'componentWillLeave',
 		value: function componentWillLeave(cb) {
-			var animationGroup = this.props.routeAnimations;
+			var animationGroup = this.props.getExitAnimations();
 			if (!this.container.animate) {
 				return cb();
 			}
-			this.container.animate([animationGroup.leaveAnimationStart, animationGroup.leaveAnimationEnd], {
+			this.container.animate([animationGroup.animationStart, animationGroup.animationEnd], {
 				duration: 240, fill: 'forwards', easing: 'ease-in'
 			}).onfinish = function () {
 				cb();
@@ -837,8 +878,8 @@ var App = function (_Component) {
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* default */],
 					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */] }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animation: __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["b" /* Animations */].Pop, path: '/profile', component: __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */] })
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animation: __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["b" /* Animations */].Pop, path: '/', component: __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */] }),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animation: __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["b" /* Animations */].SlideLeft, path: '/profile', component: __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */] })
 				)
 			);
 		}
@@ -1756,6 +1797,45 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return slideLeftEntryAnimationStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return slideLeftEntryAnimationEnd; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return slideLeftExitAnimationStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return slideLeftExitAnimationEnd; });
+var slideLeftEntryAnimationStart = {
+	transform: 'translateX(100%)',
+	opacity: 0
+};
+
+var slideLeftEntryAnimationEnd = {
+	transform: 'translateX(0%)',
+	opacity: 1
+};
+
+var slideLeftExitAnimationStart = {
+	transform: 'translateX(0%)',
+	opacity: 1
+};
+
+var slideLeftExitAnimationEnd = {
+	transform: 'translateX(-100%)',
+	opacity: 0
+};
+
+
 
 /***/ })
 ],[12]);

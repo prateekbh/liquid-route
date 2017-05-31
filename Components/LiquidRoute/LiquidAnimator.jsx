@@ -6,23 +6,23 @@ export default class LiquidAnimator extends Component {
 		this.animationEnd = null;
 	}
 	componentWillEnter(cb){
-		const animationGroup = this.props.routeAnimations;
+		this.props.onSetCurrentAnimation();
+		const animationGroup = this.props.entryAnimations;
 		if(!this.container.animate) {
 			return cb();
 		}
-		console.log(animationGroup.enterAnimationStart);
-		this.container.animate([animationGroup.enterAnimationStart, animationGroup.enterAnimationEnd], {
+		this.container.animate([animationGroup.animationStart, animationGroup.animationEnd], {
 			duration: 240,fill:'forwards', easing: 'ease-in'
 		}).onfinish=()=>{
 			cb();
 		}
 	}
 	componentWillLeave(cb){
-		const animationGroup = this.props.routeAnimations;
+		const animationGroup = this.props.getExitAnimations();
 		if(!this.container.animate) {
 			return cb();
 		}
-		this.container.animate([animationGroup.leaveAnimationStart, animationGroup.leaveAnimationEnd], {
+		this.container.animate([animationGroup.animationStart, animationGroup.animationEnd], {
 			duration: 240,fill:'forwards', easing: 'ease-in'
 		}).onfinish=()=>{
 			cb();

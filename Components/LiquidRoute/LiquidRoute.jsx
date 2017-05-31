@@ -3,44 +3,74 @@ import TransitionGroup from 'preact-transition-group';
 import LiquidAnimator from './LiquidAnimator.jsx';
 import {faderAnimationStart, faderAnimationEnd} from '../AnimationDefinations/fade';
 import {poperAnimationStart, poperAnimationEnd} from '../AnimationDefinations/pop';
+import * as slideLeftAnimations from '../AnimationDefinations/slideLeft';
+
+const Animations = {
+	Fade: 'Fade',
+	SlideLeft: 'SlideLeft',
+	Pop: 'Pop',
+	None: 'None',
+}
+
+let currentAnimation = Animations.None;
 
 export default class LiquidRoute extends Component {
 	constructor() {
 		super();
 	}
-	makeAnimationGroup(props) {
-		if (!props.animation) {
+	makeEntryAnimationGroup(props) {
+		if (props.animation === Animations.Fade) {
 			return {
-				enterAnimationStart: faderAnimationStart,
-				enterAnimationEnd: faderAnimationEnd,
-				leaveAnimationStart: faderAnimationEnd,
-				leaveAnimationEnd: faderAnimationStart,
+				animationStart: faderAnimationStart,
+				animationEnd: faderAnimationEnd
 			};
 		} else if (props.animation === Animations.Pop) {
 			return {
-				enterAnimationStart: poperAnimationStart,
-				enterAnimationEnd: poperAnimationEnd,
-				leaveAnimationStart: poperAnimationEnd,
-				leaveAnimationEnd: poperAnimationStart,
+				animationStart: poperAnimationStart,
+				animationEnd: poperAnimationEnd
+			};
+		} else if (props.animation === Animations.SlideLeft) {
+			return {
+				animationStart: slideLeftAnimations.slideLeftEntryAnimationStart,
+				animationEnd: slideLeftAnimations.slideLeftEntryAnimationEnd
 			};
 		}
 	}
+	getExitAnimationGroup(props) {
+		if (currentAnimation === Animations.Fade) {
+			return {
+				animationStart: faderAnimationEnd,
+				animationEnd: faderAnimationStart,
+			};
+		} else if (currentAnimation === Animations.Pop) {
+			return {
+				animationStart: poperAnimationEnd,
+				animationEnd: poperAnimationStart,
+			};
+		} else if (currentAnimation === Animations.SlideLeft) {
+			return {
+				animationStart: slideLeftAnimations.slideLeftExitAnimationStart,
+				animationEnd: slideLeftAnimations.slideLeftExitAnimationEnd
+			};
+		}
+	}
+	setCurrentAnimation() {
+		currentAnimation = this.props.animation;
+	}
 	render(props) {
-		const routeAnimations = this.makeAnimationGroup(props);
+		const entryAnimations = this.makeEntryAnimationGroup(props);
 		return (
 				<TransitionGroup>
-					<LiquidAnimator routeAnimations={routeAnimations} key={props.url}>
+					<LiquidAnimator
+						entryAnimations={entryAnimations}
+						getExitAnimations={()=>{return this.getExitAnimationGroup()}}
+						key={props.url}
+						onSetCurrentAnimation={()=>{this.setCurrentAnimation()}}>
 						{h(props.component, props)}
 					</LiquidAnimator>
 				</TransitionGroup>
 		);
 	}
-}
-
-const Animations = {
-	Fade: 'Fade',
-	Slide: 'Slide',
-	Pop: 'Pop',
 }
 
 export {
