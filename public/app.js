@@ -391,10 +391,10 @@ Router.Link = Link;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_router__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Box_jsx__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Box_jsx__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Home_css__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Home_css__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Home_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Home_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -433,10 +433,10 @@ var Home = function (_Component) {
 		}
 	}, {
 		key: 'render',
-		value: function render() {
+		value: function render(props) {
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				'div',
-				{ className: 'page' },
+				{ className: 'page', key: this.url },
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					'h1',
 					{ onClick: this.toggleBox.bind(this) },
@@ -466,11 +466,14 @@ var Home = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Animations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_preact_transition_group__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__ = __webpack_require__(9);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -483,25 +486,47 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
 var LiquidRoute = function (_Component) {
 	_inherits(LiquidRoute, _Component);
 
 	function LiquidRoute() {
 		_classCallCheck(this, LiquidRoute);
 
-		return _possibleConstructorReturn(this, (LiquidRoute.__proto__ || Object.getPrototypeOf(LiquidRoute)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (LiquidRoute.__proto__ || Object.getPrototypeOf(LiquidRoute)).call(this));
 	}
 
 	_createClass(LiquidRoute, [{
+		key: 'makeAnimationGroup',
+		value: function makeAnimationGroup(props) {
+			if (!props.animation) {
+				return {
+					enterAnimationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */],
+					enterAnimationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */],
+					leaveAnimationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */],
+					leaveAnimationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */]
+				};
+			} else if (props.animation === Animations.Pop) {
+				return {
+					enterAnimationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */],
+					enterAnimationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */],
+					leaveAnimationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */],
+					leaveAnimationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */]
+				};
+			}
+		}
+	}, {
 		key: 'render',
-		value: function render() {
+		value: function render(props) {
+			var routeAnimations = this.makeAnimationGroup(props);
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
 				null,
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
-					{ animation: this.animName, key: this.props.url },
-					this.props.children
+					{ routeAnimations: routeAnimations, key: props.url },
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(props.component, props)
 				)
 			);
 		}
@@ -511,6 +536,15 @@ var LiquidRoute = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (LiquidRoute);
+
+
+var Animations = {
+	Fade: 'Fade',
+	Slide: 'Slide',
+	Pop: 'Pop'
+};
+
+
 
 /***/ }),
 /* 4 */
@@ -540,10 +574,10 @@ var Profile = function (_Component) {
 
 	_createClass(Profile, [{
 		key: 'render',
-		value: function render() {
+		value: function render(props) {
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				'div',
-				{ className: 'page' },
+				{ className: 'page profile', key: this.url },
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					'h1',
 					null,
@@ -583,6 +617,42 @@ var Profile = function (_Component) {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return faderAnimationStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faderAnimationEnd; });
+var faderAnimationStart = {
+	opacity: 0
+};
+
+var faderAnimationEnd = {
+	opacity: 1
+};
+
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return poperAnimationStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return poperAnimationEnd; });
+var poperAnimationStart = {
+	transform: 'scale(0.5)',
+	opacity: 0
+};
+
+var poperAnimationEnd = {
+	transform: 'scale(1)',
+	opacity: 1
+};
+
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -632,14 +702,12 @@ var Box = function (_Component) {
 /* unused harmony default export */ var _unused_webpack_default_export = (Box);
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AnimationDefinations_fader__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__AnimationDefinations_pop__ = __webpack_require__(23);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -647,8 +715,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
 
 
 
@@ -668,11 +734,12 @@ var LiquidAnimator = function (_Component) {
 	_createClass(LiquidAnimator, [{
 		key: 'componentWillEnter',
 		value: function componentWillEnter(cb) {
+			var animationGroup = this.props.routeAnimations;
 			if (!this.container.animate) {
 				return cb();
 			}
-
-			this.container.animate([__WEBPACK_IMPORTED_MODULE_2__AnimationDefinations_pop__["a" /* popAnimationStart */], __WEBPACK_IMPORTED_MODULE_2__AnimationDefinations_pop__["b" /* popAnimationEnd */]], {
+			console.log(animationGroup.enterAnimationStart);
+			this.container.animate([animationGroup.enterAnimationStart, animationGroup.enterAnimationEnd], {
 				duration: 240, fill: 'forwards', easing: 'ease-in'
 			}).onfinish = function () {
 				cb();
@@ -681,11 +748,11 @@ var LiquidAnimator = function (_Component) {
 	}, {
 		key: 'componentWillLeave',
 		value: function componentWillLeave(cb) {
+			var animationGroup = this.props.routeAnimations;
 			if (!this.container.animate) {
 				return cb();
 			}
-
-			this.container.animate([__WEBPACK_IMPORTED_MODULE_2__AnimationDefinations_pop__["b" /* popAnimationEnd */], __WEBPACK_IMPORTED_MODULE_2__AnimationDefinations_pop__["a" /* popAnimationStart */]], {
+			this.container.animate([animationGroup.leaveAnimationStart, animationGroup.leaveAnimationEnd], {
 				duration: 240, fill: 'forwards', easing: 'ease-in'
 			}).onfinish = function () {
 				cb();
@@ -713,7 +780,7 @@ var LiquidAnimator = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (LiquidAnimator);
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -770,16 +837,8 @@ var App = function (_Component) {
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* default */],
 					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */],
-						{ path: '/' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */], null)
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */],
-						{ path: '/profile' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */], null)
-					)
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */] }),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animation: __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["b" /* Animations */].Pop, path: '/profile', component: __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */] })
 				)
 			);
 		}
@@ -791,7 +850,7 @@ var App = function (_Component) {
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["render"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(App, null), document.querySelector('.app'));
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1331,7 +1390,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 //# sourceMappingURL=preact-css-transition-group.js.map
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1693,54 +1752,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 //# sourceMappingURL=preact-transition-group.js.map
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
-/***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export faderAnimationStart */
-/* unused harmony export faderAnimationEnd */
-var faderAnimationStart = {
-	opacity: 0
-};
-
-var faderAnimationEnd = {
-	opacity: 1
-};
-
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return popAnimationStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return popAnimationEnd; });
-var popAnimationStart = {
-	transform: 'scale(0.5)',
-	opacity: 0
-};
-
-var popAnimationEnd = {
-	transform: 'scale(1)',
-	opacity: 1
-};
-
-
-
 /***/ })
-],[10]);
+],[12]);

@@ -3,10 +3,9 @@ import Router from 'preact-router';
 import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
-import LiquidRoute from './Components/LiquidRoute/LiquidRoute.jsx'
+import LiquidRoute, {Animations} from './Components/LiquidRoute/LiquidRoute.jsx'
 import Home from './Components/Home/Home.jsx'
 import Profile from './Components/Profile/Profile.jsx'
-
 
 class App extends Component{
 	constructor(){
@@ -19,12 +18,8 @@ class App extends Component{
 		return(
 			<div style="position:relative">
 				<Router>
-					<LiquidRoute path="/">
-						<Home/>
-					</LiquidRoute>
-					<LiquidRoute path="/profile">
-						<Profile/>
-					</LiquidRoute>
+					<LiquidRoute path="/" component={Home}/>
+					<LiquidRoute animation={Animations.Pop} path="/profile" component={Profile}/>
 				</Router>
 			</div>
 		);

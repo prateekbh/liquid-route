@@ -1,7 +1,4 @@
 import { h, Component } from 'preact';
-import {faderAnimationStart, faderAnimationEnd} from '../AnimationDefinations/fader';
-import {popAnimationStart, popAnimationEnd} from '../AnimationDefinations/pop';
-
 export default class LiquidAnimator extends Component {
 	constructor() {
 		super();
@@ -9,22 +6,23 @@ export default class LiquidAnimator extends Component {
 		this.animationEnd = null;
 	}
 	componentWillEnter(cb){
+		const animationGroup = this.props.routeAnimations;
 		if(!this.container.animate) {
 			return cb();
 		}
-
-		this.container.animate([popAnimationStart, popAnimationEnd], {
+		console.log(animationGroup.enterAnimationStart);
+		this.container.animate([animationGroup.enterAnimationStart, animationGroup.enterAnimationEnd], {
 			duration: 240,fill:'forwards', easing: 'ease-in'
 		}).onfinish=()=>{
 			cb();
 		}
 	}
 	componentWillLeave(cb){
+		const animationGroup = this.props.routeAnimations;
 		if(!this.container.animate) {
 			return cb();
 		}
-
-		this.container.animate([popAnimationEnd, popAnimationStart], {
+		this.container.animate([animationGroup.leaveAnimationStart, animationGroup.leaveAnimationEnd], {
 			duration: 240,fill:'forwards', easing: 'ease-in'
 		}).onfinish=()=>{
 			cb();

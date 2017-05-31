@@ -12,7 +12,6 @@ const config = {
 	},
 	output: {
 		path: __dirname + '/public',
-		publicPath: '/public/',
 		filename: '[name].js'
 	},
 	module: {

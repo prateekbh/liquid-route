@@ -1,15 +1,14 @@
-const popAnimationStart = {
+const poperAnimationStart = {
 	transform: 'scale(0.5)',
 	opacity: 0,
 };
 
-const popAnimationEnd = {
+const poperAnimationEnd = {
 	transform: 'scale(1)',
 	opacity: 1,
 };
 
-
 export {
-	popAnimationStart,
-	popAnimationEnd,
+	poperAnimationStart,
+	poperAnimationEnd,
 };

@@ -15,9 +15,9 @@ export default class Home extends Component {
 			showBox: !this.state.showBox
 		});
 	}
-	render() {
+	render(props) {
 		return (
-			<div className='page'>
+			<div className='page' key={this.url}>
 					<h1 onClick={this.toggleBox.bind(this)}>Home</h1>
 					<p>This is the Home component.</p>
 					<Link href='/profile'>profile</Link>

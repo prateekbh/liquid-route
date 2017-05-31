@@ -6,7 +6,6 @@ const faderAnimationEnd = {
 	opacity: 1,
 };
 
-
 export {
 	faderAnimationStart,
 	faderAnimationEnd,
