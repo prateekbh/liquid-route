@@ -22,13 +22,11 @@ export default {
 	getEntryAnimation: () => {
 		return {
 			animation: [slideLeftEntryAnimationStart, slideLeftEntryAnimationEnd],
-			duration: 400
 		}
 	},
 	getExitAnimation: () => {
 		return {
 			animation: [slideLeftExitAnimationStart, slideLeftExitAnimationEnd],
-			duration: 400
 		}
 	}
 

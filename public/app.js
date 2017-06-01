@@ -628,14 +628,12 @@ var faderAnimationEnd = {
 /* harmony default export */ __webpack_exports__["a"] = ({
 	getEntryAnimation: function getEntryAnimation() {
 		return {
-			animation: [faderAnimationStart, faderAnimationEnd],
-			duration: 400
+			animation: [faderAnimationStart, faderAnimationEnd]
 		};
 	},
 	getExitAnimation: function getExitAnimation() {
 		return {
-			animation: [faderAnimationEnd, faderAnimationStart],
-			duration: 400
+			animation: [faderAnimationEnd, faderAnimationStart]
 		};
 	}
 });
@@ -658,14 +656,12 @@ var poperAnimationEnd = {
 /* unused harmony default export */ var _unused_webpack_default_export = ({
 	getEntryAnimation: function getEntryAnimation() {
 		return {
-			animation: [poperAnimationStart, poperAnimationEnd],
-			duration: 400
+			animation: [poperAnimationStart, poperAnimationEnd]
 		};
 	},
 	getExitAnimation: function getExitAnimation() {
 		return {
-			animation: [poperAnimationEnd, poperAnimationStart],
-			duration: 400
+			animation: [poperAnimationEnd, poperAnimationStart]
 		};
 	}
 });
@@ -737,6 +733,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var defaultOpts = {
+	duration: 300,
+	fill: 'forwards',
+	easing: 'ease-out'
+};
+
 var LiquidAnimator = function (_Component) {
 	_inherits(LiquidAnimator, _Component);
 
@@ -758,11 +760,8 @@ var LiquidAnimator = function (_Component) {
 				return cb();
 			}
 			var animation = this.props.getEntryAnimation();
-			this.container.animate(animation.animation, {
-				duration: animation.duration || 300,
-				fill: 'forwards',
-				easing: animation.easing || 'ease-out'
-			}).onfinish = function () {
+			var animationOptions = Object.assign({}, defaultOpts, animation.options);
+			this.container.animate(animation.animation, animationOptions).onfinish = function () {
 				cb();
 			};
 		}
@@ -775,12 +774,10 @@ var LiquidAnimator = function (_Component) {
 				return cb();
 			}
 			var animation = this.props.getExitAnimation();
-			this.container.animate(animation.animation, {
-				duration: animation.duration || 300,
-				easing: animation.easing || 'ease-out'
-			}).onfinish = function () {
+			var animationOptions = Object.assign({}, defaultOpts, animation.options);
+			this.container.animate(animation.animation, animationOptions).onfinish = function () {
 				cb();
-				_this2.container.animate(_this2.props.getExitAnimation().animation.reverse(), { duration: 1 });
+				_this2.container.animate(animation.animation.reverse(), { duration: 1 });
 			};
 		}
 	}, {
@@ -1828,14 +1825,12 @@ var slideLeftExitAnimationEnd = {
 /* unused harmony default export */ var _unused_webpack_default_export = ({
 	getEntryAnimation: function getEntryAnimation() {
 		return {
-			animation: [slideLeftEntryAnimationStart, slideLeftEntryAnimationEnd],
-			duration: 400
+			animation: [slideLeftEntryAnimationStart, slideLeftEntryAnimationEnd]
 		};
 	},
 	getExitAnimation: function getExitAnimation() {
 		return {
-			animation: [slideLeftExitAnimationStart, slideLeftExitAnimationEnd],
-			duration: 400
+			animation: [slideLeftExitAnimationStart, slideLeftExitAnimationEnd]
 		};
 	}
 

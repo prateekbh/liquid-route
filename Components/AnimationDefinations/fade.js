@@ -11,13 +11,11 @@ export default {
 	getEntryAnimation: () => {
 		return {
 			animation: [faderAnimationStart, faderAnimationEnd],
-			duration: 400
 		};
 	},
 	getExitAnimation: () => {
 		return {
 			animation: [faderAnimationEnd, faderAnimationStart],
-			duration: 400
 		};
 	}
 };

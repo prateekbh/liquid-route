@@ -1,4 +1,11 @@
 import { h, Component } from 'preact';
+
+const defaultOpts = {
+	duration: 300 ,
+	fill: 'forwards',
+	easing: 'ease-out',
+};
+
 export default class LiquidAnimator extends Component {
 	constructor() {
 		super();
@@ -11,11 +18,8 @@ export default class LiquidAnimator extends Component {
 			return cb();
 		}
 		const animation = this.props.getEntryAnimation();
-		this.container.animate(animation.animation, {
-			duration: animation.duration || 300 ,
-			fill: 'forwards',
-			easing: animation.easing || 'ease-out',
-		}).onfinish=()=>{
+		const animationOptions = Object.assign({},defaultOpts, animation.options);
+		this.container.animate(animation.animation, animationOptions).onfinish = () => {
 			cb();
 		}
 	}
@@ -24,12 +28,10 @@ export default class LiquidAnimator extends Component {
 			return cb();
 		}
 		const animation = this.props.getExitAnimation();
-		this.container.animate(animation.animation, {
-			duration: animation.duration || 300 ,
-			easing: animation.easing || 'ease-out',
-		}).onfinish=()=>{
+		const animationOptions = Object.assign({},defaultOpts, animation.options);
+		this.container.animate(animation.animation, animationOptions).onfinish = () => {
 			cb();
-			this.container.animate(this.props.getExitAnimation().animation.reverse(), { duration: 1});
+			this.container.animate(animation.animation.reverse(), {duration: 1});
 		}
 	}
 	render() {
