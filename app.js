@@ -10,7 +10,7 @@ import Fader from './Components/AnimationDefinations/fade';
 import Poper from './Components/AnimationDefinations/pop';
 import SlideLeft from './Components/AnimationDefinations/slideLeft';
 import ScaleDownFromRight from './Components/AnimationDefinations/scaleDownFromRight';
-import Boxey from './Components/AnimationDefinations/boxey';
+import UpUpAway from './Components/AnimationDefinations/upUpAway';
 class App extends Component{
 	constructor(){
 		super();
@@ -23,7 +23,7 @@ class App extends Component{
 			<div style="position:relative">
 				<Router>
 					<LiquidRoute animator={Fader} path="/" component={Home}/>
-					<LiquidRoute animator={ScaleDownFromRight} path="/profile" component={Profile}/>
+					<LiquidRoute animator={UpUpAway} path="/profile" component={Profile}/>
 				</Router>
 			</div>
 		);

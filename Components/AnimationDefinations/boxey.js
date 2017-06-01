@@ -13,13 +13,11 @@ export default {
 	getEntryAnimation: () => {
 		return {
 			animation: [boxeyAnimationStart, boxeyAnimationEnd],
-			duration: 400
 		};
 	},
 	getExitAnimation: () => {
 		return {
 			animation: [boxeyAnimationEnd, boxeyAnimationStart],
-			duration: 400
 		};
 	}
 };

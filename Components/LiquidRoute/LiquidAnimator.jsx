@@ -30,8 +30,10 @@ export default class LiquidAnimator extends Component {
 		const animation = this.props.getExitAnimation();
 		const animationOptions = Object.assign({},defaultOpts, animation.options);
 		this.container.animate(animation.animation, animationOptions).onfinish = () => {
+			const reversedAnimation = animation.animation.reverse();
+			this.container.animate(reversedAnimation, {duration: 1, fill: 'forwards'});
 			cb();
-			this.container.animate(animation.animation.reverse(), {duration: 1});
+
 		}
 	}
 	render() {
