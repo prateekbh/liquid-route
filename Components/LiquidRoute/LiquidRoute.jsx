@@ -1,78 +1,33 @@
 import { h, Component, cloneElement } from 'preact';
 import TransitionGroup from 'preact-transition-group';
 import LiquidAnimator from './LiquidAnimator.jsx';
-import {faderAnimationStart, faderAnimationEnd} from '../AnimationDefinations/fade';
-import {poperAnimationStart, poperAnimationEnd} from '../AnimationDefinations/pop';
-import * as slideLeftAnimations from '../AnimationDefinations/slideLeft';
 
-const Animations = {
-	Fade: 'Fade',
-	SlideLeft: 'SlideLeft',
-	Pop: 'Pop',
-	None: 'None',
-}
-
-let currentAnimation = Animations.None;
+let currentAnimation = null;
 
 export default class LiquidRoute extends Component {
 	constructor() {
 		super();
 	}
-	makeEntryAnimationGroup(props) {
-		if (props.animation === Animations.Fade) {
-			return {
-				animationStart: faderAnimationStart,
-				animationEnd: faderAnimationEnd
-			};
-		} else if (props.animation === Animations.Pop) {
-			return {
-				animationStart: poperAnimationStart,
-				animationEnd: poperAnimationEnd
-			};
-		} else if (props.animation === Animations.SlideLeft) {
-			return {
-				animationStart: slideLeftAnimations.slideLeftEntryAnimationStart,
-				animationEnd: slideLeftAnimations.slideLeftEntryAnimationEnd
-			};
-		}
+	getEntryAnimation() {
+		return currentAnimation.getEntryAnimation();
 	}
-	getExitAnimationGroup(props) {
-		if (currentAnimation === Animations.Fade) {
-			return {
-				animationStart: faderAnimationEnd,
-				animationEnd: faderAnimationStart,
-			};
-		} else if (currentAnimation === Animations.Pop) {
-			return {
-				animationStart: poperAnimationEnd,
-				animationEnd: poperAnimationStart,
-			};
-		} else if (currentAnimation === Animations.SlideLeft) {
-			return {
-				animationStart: slideLeftAnimations.slideLeftExitAnimationStart,
-				animationEnd: slideLeftAnimations.slideLeftExitAnimationEnd
-			};
-		}
+	getExitAnimation() {
+		return currentAnimation.getExitAnimation();
 	}
 	setCurrentAnimation() {
-		currentAnimation = this.props.animation;
+		currentAnimation = this.props.animator;
 	}
 	render(props) {
-		const entryAnimations = this.makeEntryAnimationGroup(props);
 		return (
 				<TransitionGroup>
 					<LiquidAnimator
-						entryAnimations={entryAnimations}
-						getExitAnimations={()=>{return this.getExitAnimationGroup()}}
+						getEntryAnimation={()=>{return this.getEntryAnimation()}}
+						getExitAnimation={()=>{return this.getExitAnimation()}}
 						key={props.url}
-						onSetCurrentAnimation={()=>{this.setCurrentAnimation()}}>
+						onSetCurrentAnimation={()=>{this.setCurrentAnimation()}} {...props}>
 						{h(props.component, props)}
 					</LiquidAnimator>
 				</TransitionGroup>
 		);
 	}
 }
-
-export {
-	Animations
-};

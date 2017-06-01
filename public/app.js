@@ -466,15 +466,13 @@ var Home = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Animations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_preact_transition_group__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__ = __webpack_require__(24);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -487,17 +485,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
-
-var Animations = {
-	Fade: 'Fade',
-	SlideLeft: 'SlideLeft',
-	Pop: 'Pop',
-	None: 'None'
-};
-
-var currentAnimation = Animations.None;
+var currentAnimation = null;
 
 var LiquidRoute = function (_Component) {
 	_inherits(LiquidRoute, _Component);
@@ -509,70 +497,41 @@ var LiquidRoute = function (_Component) {
 	}
 
 	_createClass(LiquidRoute, [{
-		key: 'makeEntryAnimationGroup',
-		value: function makeEntryAnimationGroup(props) {
-			if (props.animation === Animations.Fade) {
-				return {
-					animationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */],
-					animationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */]
-				};
-			} else if (props.animation === Animations.Pop) {
-				return {
-					animationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */],
-					animationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */]
-				};
-			} else if (props.animation === Animations.SlideLeft) {
-				return {
-					animationStart: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["a" /* slideLeftEntryAnimationStart */],
-					animationEnd: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["b" /* slideLeftEntryAnimationEnd */]
-				};
-			}
+		key: 'getEntryAnimation',
+		value: function getEntryAnimation() {
+			return currentAnimation.getEntryAnimation();
 		}
 	}, {
-		key: 'getExitAnimationGroup',
-		value: function getExitAnimationGroup(props) {
-			if (currentAnimation === Animations.Fade) {
-				return {
-					animationStart: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["b" /* faderAnimationEnd */],
-					animationEnd: __WEBPACK_IMPORTED_MODULE_3__AnimationDefinations_fade__["a" /* faderAnimationStart */]
-				};
-			} else if (currentAnimation === Animations.Pop) {
-				return {
-					animationStart: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["b" /* poperAnimationEnd */],
-					animationEnd: __WEBPACK_IMPORTED_MODULE_4__AnimationDefinations_pop__["a" /* poperAnimationStart */]
-				};
-			} else if (currentAnimation === Animations.SlideLeft) {
-				return {
-					animationStart: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["c" /* slideLeftExitAnimationStart */],
-					animationEnd: __WEBPACK_IMPORTED_MODULE_5__AnimationDefinations_slideLeft__["d" /* slideLeftExitAnimationEnd */]
-				};
-			}
+		key: 'getExitAnimation',
+		value: function getExitAnimation() {
+			return currentAnimation.getExitAnimation();
 		}
 	}, {
 		key: 'setCurrentAnimation',
 		value: function setCurrentAnimation() {
-			currentAnimation = this.props.animation;
+			currentAnimation = this.props.animator;
 		}
 	}, {
 		key: 'render',
 		value: function render(props) {
 			var _this2 = this;
 
-			var entryAnimations = this.makeEntryAnimationGroup(props);
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
 				null,
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
-					{
-						entryAnimations: entryAnimations,
-						getExitAnimations: function getExitAnimations() {
-							return _this2.getExitAnimationGroup();
+					_extends({
+						getEntryAnimation: function getEntryAnimation() {
+							return _this2.getEntryAnimation();
+						},
+						getExitAnimation: function getExitAnimation() {
+							return _this2.getExitAnimation();
 						},
 						key: props.url,
 						onSetCurrentAnimation: function onSetCurrentAnimation() {
 							_this2.setCurrentAnimation();
-						} },
+						} }, props),
 					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(props.component, props)
 				)
 			);
@@ -583,9 +542,6 @@ var LiquidRoute = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (LiquidRoute);
-
-
-
 
 /***/ }),
 /* 4 */
@@ -661,8 +617,6 @@ var Profile = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return faderAnimationStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faderAnimationEnd; });
 var faderAnimationStart = {
 	opacity: 0
 };
@@ -671,15 +625,26 @@ var faderAnimationEnd = {
 	opacity: 1
 };
 
-
+/* harmony default export */ __webpack_exports__["a"] = ({
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [faderAnimationStart, faderAnimationEnd],
+			duration: 400
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [faderAnimationEnd, faderAnimationStart],
+			duration: 400
+		};
+	}
+});
 
 /***/ }),
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return poperAnimationStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return poperAnimationEnd; });
 var poperAnimationStart = {
 	transform: 'scale(0.5)',
 	opacity: 0
@@ -690,7 +655,20 @@ var poperAnimationEnd = {
 	opacity: 1
 };
 
-
+/* unused harmony default export */ var _unused_webpack_default_export = ({
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [poperAnimationStart, poperAnimationEnd],
+			duration: 400
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [poperAnimationEnd, poperAnimationStart],
+			duration: 400
+		};
+	}
+});
 
 /***/ }),
 /* 10 */
@@ -776,12 +754,14 @@ var LiquidAnimator = function (_Component) {
 		key: 'componentWillEnter',
 		value: function componentWillEnter(cb) {
 			this.props.onSetCurrentAnimation();
-			var animationGroup = this.props.entryAnimations;
 			if (!this.container.animate) {
 				return cb();
 			}
-			this.container.animate([animationGroup.animationStart, animationGroup.animationEnd], {
-				duration: 240, fill: 'forwards', easing: 'ease-in'
+			var animation = this.props.getEntryAnimation();
+			this.container.animate(animation.animation, {
+				duration: animation.duration || 300,
+				fill: 'forwards',
+				easing: animation.easing || 'ease-out'
 			}).onfinish = function () {
 				cb();
 			};
@@ -789,26 +769,30 @@ var LiquidAnimator = function (_Component) {
 	}, {
 		key: 'componentWillLeave',
 		value: function componentWillLeave(cb) {
-			var animationGroup = this.props.getExitAnimations();
+			var _this2 = this;
+
 			if (!this.container.animate) {
 				return cb();
 			}
-			this.container.animate([animationGroup.animationStart, animationGroup.animationEnd], {
-				duration: 240, fill: 'forwards', easing: 'ease-in'
+			var animation = this.props.getExitAnimation();
+			this.container.animate(animation.animation, {
+				duration: animation.duration || 300,
+				easing: animation.easing || 'ease-out'
 			}).onfinish = function () {
 				cb();
+				_this2.container.animate(_this2.props.getExitAnimation().animation.reverse(), { duration: 1 });
 			};
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 				'div',
 				{ className: 'lqd-container',
 					ref: function ref(container) {
-						_this2.container = container;
+						_this3.container = container;
 					} },
 				this.props.children
 			);
@@ -838,6 +822,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Components_AnimationDefinations_fade__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Components_AnimationDefinations_pop__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Components_AnimationDefinations_slideLeft__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Components_AnimationDefinations_scaleDownFromRight__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Components_AnimationDefinations_boxey__ = __webpack_require__(25);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -845,6 +834,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
 
 
 
@@ -878,8 +872,8 @@ var App = function (_Component) {
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* default */],
 					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animation: __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["b" /* Animations */].Pop, path: '/', component: __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */] }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animation: __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["b" /* Animations */].SlideLeft, path: '/profile', component: __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */] })
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_8__Components_AnimationDefinations_fade__["a" /* default */], path: '/', component: __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */] }),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_11__Components_AnimationDefinations_scaleDownFromRight__["a" /* default */], path: '/profile', component: __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */] })
 				)
 			);
 		}
@@ -1811,10 +1805,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return slideLeftEntryAnimationStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return slideLeftEntryAnimationEnd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return slideLeftExitAnimationStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return slideLeftExitAnimationEnd; });
 var slideLeftEntryAnimationStart = {
 	transform: 'translateX(100%)',
 	opacity: 0
@@ -1835,7 +1825,92 @@ var slideLeftExitAnimationEnd = {
 	opacity: 0
 };
 
+/* unused harmony default export */ var _unused_webpack_default_export = ({
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [slideLeftEntryAnimationStart, slideLeftEntryAnimationEnd],
+			duration: 400
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [slideLeftExitAnimationStart, slideLeftExitAnimationEnd],
+			duration: 400
+		};
+	}
 
+});
+
+/***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var boxeyAnimationStart = {
+	opacity: 0,
+	transform: 'rotateY(-10deg) translateX(100%)'
+};
+
+var boxeyAnimationEnd = {
+	opacity: 1,
+	transform: 'rotateY(0) translateX(0%)'
+};
+
+/* unused harmony default export */ var _unused_webpack_default_export = ({
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [boxeyAnimationStart, boxeyAnimationEnd],
+			duration: 400
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [boxeyAnimationEnd, boxeyAnimationStart],
+			duration: 400
+		};
+	}
+});
+
+/***/ }),
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var scaleDownFromRightEntryAnimationStart = {
+	transform: 'translateX(100%)',
+	opacity: 0
+};
+
+var scaleDownFromRightEntryAnimationEnd = {
+	transform: 'translateX(0%)',
+	opacity: 1
+};
+
+var scaleDownFromRightExitAnimationStart = {
+	transform: 'scale(1)',
+	opacity: 1
+};
+
+var scaleDownFromRightExitAnimationEnd = {
+	transform: 'scale(0.5)',
+	opacity: 0
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [scaleDownFromRightEntryAnimationStart, scaleDownFromRightEntryAnimationEnd],
+			duration: 500
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [scaleDownFromRightExitAnimationStart, scaleDownFromRightExitAnimationEnd],
+			duration: 700
+		};
+	}
+
+});
 
 /***/ })
 ],[12]);
