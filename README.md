@@ -8,5 +8,5 @@ This mainly consist of the following routes
 3. SwipeLeft: Next route will pop from center and current route will implode
 3. SwipeRight: Next route will pop from center and current route will implode
 
-This library WILL contain what will make animated routes with `preact-router` as easy as Dwayne `The Rock` Johnson giving Rockbottom.
+This library WILL contain what will make animated
 
