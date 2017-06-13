@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
 import {Link} from 'preact-router';
-import Box from '../Box.jsx';
 import CSSTransitionGroup from 'preact-css-transition-group';
 import './Home.css';
 export default class Home extends Component {

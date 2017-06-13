@@ -4,14 +4,14 @@ webpackJsonp([0],[
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 /* unused harmony export subscribers */
 /* unused harmony export getCurrentUrl */
 /* unused harmony export route */
 /* unused harmony export Router */
 /* unused harmony export Route */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Link; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 
 
 var EMPTY$1 = {};
@@ -380,219 +380,16 @@ Router.Router = Router;
 Router.Route = Route;
 Router.Link = Link;
 
-/* harmony default export */ __webpack_exports__["a"] = (Router);
+/* harmony default export */ __webpack_exports__["a"] = Router;
 //# sourceMappingURL=preact-router.es.js.map
 
 /***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_router__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Box_jsx__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_css_transition_group__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Home_css__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Home_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Home_css__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-var Home = function (_Component) {
-	_inherits(Home, _Component);
-
-	function Home() {
-		_classCallCheck(this, Home);
-
-		var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
-
-		_this.state = {
-			showBox: false
-		};
-		return _this;
-	}
-
-	_createClass(Home, [{
-		key: 'toggleBox',
-		value: function toggleBox() {
-			this.setState({
-				showBox: !this.state.showBox
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', key: this.url },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'h1',
-					{ onClick: this.toggleBox.bind(this) },
-					'Home'
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'p',
-					null,
-					'This is the Home component.'
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_1_preact_router__["b" /* Link */],
-					{ href: '/profile' },
-					'profile'
-				)
-			);
-		}
-	}]);
-
-	return Home;
-}(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Home);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_preact_transition_group__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(9);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var currentAnimation = null;
-
-var LiquidRoute = function (_Component) {
-	_inherits(LiquidRoute, _Component);
-
-	function LiquidRoute() {
-		_classCallCheck(this, LiquidRoute);
-
-		return _possibleConstructorReturn(this, (LiquidRoute.__proto__ || Object.getPrototypeOf(LiquidRoute)).call(this));
-	}
-
-	_createClass(LiquidRoute, [{
-		key: 'getEntryAnimation',
-		value: function getEntryAnimation() {
-			return currentAnimation.getEntryAnimation();
-		}
-	}, {
-		key: 'getExitAnimation',
-		value: function getExitAnimation() {
-			return currentAnimation.getExitAnimation();
-		}
-	}, {
-		key: 'setCurrentAnimation',
-		value: function setCurrentAnimation() {
-			currentAnimation = this.props.animator;
-		}
-	}, {
-		key: 'render',
-		value: function render(props) {
-			var _this2 = this;
-
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
-				null,
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
-					_extends({
-						getEntryAnimation: function getEntryAnimation() {
-							return _this2.getEntryAnimation();
-						},
-						getExitAnimation: function getExitAnimation() {
-							return _this2.getExitAnimation();
-						},
-						key: props.url,
-						onSetCurrentAnimation: function onSetCurrentAnimation() {
-							_this2.setCurrentAnimation();
-						} }, props),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(props.component, props)
-				)
-			);
-		}
-	}]);
-
-	return LiquidRoute;
-}(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (LiquidRoute);
-
-/***/ }),
+/* 2 */,
+/* 3 */,
 /* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var Profile = function (_Component) {
-	_inherits(Profile, _Component);
-
-	function Profile() {
-		_classCallCheck(this, Profile);
-
-		return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
-	}
-
-	_createClass(Profile, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page profile', key: this.url },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'h1',
-					null,
-					'Profile'
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'p',
-					null,
-					'This is the Profile component.'
-				)
-			);
-		}
-	}]);
-
-	return Profile;
-}(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Profile);
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 5 */
@@ -607,18 +404,25 @@ var Profile = function (_Component) {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 8 */
+/* 7 */,
+/* 8 */,
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_router__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Typography_style_css__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Typography_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_preact_material_components_Typography_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Theme_style_css__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Theme_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_material_components_Theme_style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_css__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__app_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5____ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_preact_async_route__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_preact_async_route__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -629,41 +433,136 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Box = function (_Component) {
-	_inherits(Box, _Component);
 
-	function Box() {
-		_classCallCheck(this, Box);
 
-		return _possibleConstructorReturn(this, (Box.__proto__ || Object.getPrototypeOf(Box)).apply(this, arguments));
+
+
+
+
+var App = function (_Component) {
+	_inherits(App, _Component);
+
+	function App() {
+		_classCallCheck(this, App);
+
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+		_this.state = {
+			url: 'Home'
+		};
+		return _this;
 	}
 
-	_createClass(Box, [{
-		key: 'componentWillEnter',
-		value: function componentWillEnter(callback) {
-			console.log('will enter');
-			callback();
-		}
-	}, {
-		key: 'componentWillLeave',
-		value: function componentWillLeave(callback) {
-			console.log('will Leave');
-			callback();
-		}
-	}, {
+	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('div', { key: 'a', className: 'box' });
+			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+				'div',
+				{ style: 'position:relative' },
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* default */],
+					null,
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_6_preact_async_route___default.a, { animator: __WEBPACK_IMPORTED_MODULE_5____["a" /* FadeAnimation */], path: '/', component: function component(url, cb) {
+							__webpack_require__.e/* import() */(2).then(__webpack_require__.bind(null, 2)).then(function (module) {
+								cb(null, module.default);
+							});
+						} }),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_6_preact_async_route___default.a, { animator: __WEBPACK_IMPORTED_MODULE_5____["b" /* PopAnimation */], path: '/profile', component: function component(url, cb) {
+							__webpack_require__.e/* import() */(3).then(__webpack_require__.bind(null, 3)).then(function (module) {
+								cb(null, module.default);
+							});
+						} })
+				)
+			);
 		}
 	}]);
 
-	return Box;
+	return App;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Box);
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["render"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(App, null), document.querySelector('.app'));
 
 /***/ }),
-/* 9 */
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Components_LiquidRoute_LiquidRoute_jsx__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__ = __webpack_require__(20);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__["a"]; });
+
+
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = __WEBPACK_IMPORTED_MODULE_0__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */];
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var faderAnimationStart = {
+	opacity: 0
+};
+
+var faderAnimationEnd = {
+	opacity: 1
+};
+
+/* harmony default export */ __webpack_exports__["a"] = {
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [faderAnimationStart, faderAnimationEnd]
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [faderAnimationEnd, faderAnimationStart]
+		};
+	}
+};
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var poperAnimationStart = {
+	transform: 'scale(0.5)',
+	opacity: 0
+};
+
+var poperAnimationEnd = {
+	transform: 'scale(1)',
+	opacity: 1
+};
+
+/* harmony default export */ __webpack_exports__["a"] = {
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [poperAnimationStart, poperAnimationEnd]
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [poperAnimationEnd, poperAnimationStart]
+		};
+	}
+};
+
+/***/ }),
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -746,31 +645,22 @@ var LiquidAnimator = function (_Component) {
 	return LiquidAnimator;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (LiquidAnimator);
+/* harmony default export */ __webpack_exports__["a"] = LiquidAnimator;
 
 /***/ }),
-/* 10 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_router__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Typography_style_css__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Typography_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_preact_material_components_Typography_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Theme_style_css__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Theme_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_material_components_Theme_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_css__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__app_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Components_AnimationDefinations_fade__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Components_AnimationDefinations_pop__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Components_AnimationDefinations_slideLeft__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Components_AnimationDefinations_scaleDownFromRight__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Components_AnimationDefinations_upUpAway__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_preact_transition_group__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_async_route__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_async_route__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -784,592 +674,66 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var currentAnimation = null;
 
+var LiquidRoute = function (_Component) {
+	_inherits(LiquidRoute, _Component);
 
+	function LiquidRoute() {
+		_classCallCheck(this, LiquidRoute);
 
-
-
-
-
-
-
-var App = function (_Component) {
-	_inherits(App, _Component);
-
-	function App() {
-		_classCallCheck(this, App);
-
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-		_this.state = {
-			url: 'Home'
-		};
-		return _this;
+		return _possibleConstructorReturn(this, (LiquidRoute.__proto__ || Object.getPrototypeOf(LiquidRoute)).call(this));
 	}
 
-	_createClass(App, [{
+	_createClass(LiquidRoute, [{
+		key: 'getEntryAnimation',
+		value: function getEntryAnimation() {
+			return currentAnimation.getEntryAnimation();
+		}
+	}, {
+		key: 'getExitAnimation',
+		value: function getExitAnimation() {
+			return currentAnimation.getExitAnimation();
+		}
+	}, {
+		key: 'setCurrentAnimation',
+		value: function setCurrentAnimation() {
+			currentAnimation = this.props.animator;
+		}
+	}, {
 		key: 'render',
-		value: function render() {
+		value: function render(props) {
+			var _this2 = this;
+
 			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ style: 'position:relative' },
+				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
+				null,
 				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_1_preact_router__["a" /* default */],
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_8__Components_AnimationDefinations_fade__["a" /* default */], path: '/', component: __WEBPACK_IMPORTED_MODULE_6__Components_Home_Home_jsx__["a" /* default */] }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_5__Components_LiquidRoute_LiquidRoute_jsx__["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_12__Components_AnimationDefinations_upUpAway__["a" /* default */], path: '/profile', component: __WEBPACK_IMPORTED_MODULE_7__Components_Profile_Profile_jsx__["a" /* default */] })
+					__WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
+					_extends({
+						getEntryAnimation: function getEntryAnimation() {
+							return _this2.getEntryAnimation();
+						},
+						getExitAnimation: function getExitAnimation() {
+							return _this2.getExitAnimation();
+						},
+						key: props.url,
+						onSetCurrentAnimation: function onSetCurrentAnimation() {
+							_this2.setCurrentAnimation();
+						} }, props),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_3_preact_async_route___default.a, props)
 				)
 			);
 		}
 	}]);
 
-	return App;
+	return LiquidRoute;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["render"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(App, null), document.querySelector('.app'));
+/* harmony default export */ __webpack_exports__["a"] = LiquidRoute;
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-(function (global, factory) {
-	( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory(__webpack_require__(0)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : global.PreactCSSTransitionGroup = factory(global.preact);
-})(this, function (preact) {
-	'use strict';
-
-	function getKey(vnode) {
-		return vnode.attributes && vnode.attributes.key;
-	}
-
-	function getComponentBase(component) {
-		return component.base;
-	}
-
-	function onlyChild(children) {
-		return children && children[0];
-	}
-
-	function filterNullChildren(children) {
-		return children && children.filter(function (i) {
-			return i !== null;
-		});
-	}
-
-	function find(arr, iter) {
-		for (var i = arr.length; i--;) {
-			if (iter(arr[i])) return true;
-		}
-		return false;
-	}
-
-	function inChildrenByKey(children, key) {
-		return find(children, function (c) {
-			return getKey(c) === key;
-		});
-	}
-
-	function inChildren(children, child) {
-		return inChildrenByKey(children, getKey(child));
-	}
-
-	function isShownInChildrenByKey(children, key, showProp) {
-		return find(children, function (c) {
-			return getKey(c) === key && c.props[showProp];
-		});
-	}
-
-	function isShownInChildren(children, child, showProp) {
-		return isShownInChildrenByKey(children, getKey(child), showProp);
-	}
-
-	function mergeChildMappings(prev, next) {
-		var ret = [];
-
-		var nextChildrenPending = {},
-		    pendingChildren = [];
-		prev.forEach(function (c) {
-			var key = getKey(c);
-			if (inChildrenByKey(next, key)) {
-				if (pendingChildren.length) {
-					nextChildrenPending[key] = pendingChildren;
-					pendingChildren = [];
-				}
-			} else {
-				pendingChildren.push(c);
-			}
-		});
-
-		next.forEach(function (c) {
-			var key = getKey(c);
-			if (nextChildrenPending.hasOwnProperty(key)) {
-				ret = ret.concat(nextChildrenPending[key]);
-			}
-			ret.push(c);
-		});
-
-		return ret.concat(pendingChildren);
-	}
-
-	var SPACE = ' ';
-	var RE_CLASS = /[\n\t\r]+/g;
-
-	var norm = function norm(elemClass) {
-		return (SPACE + elemClass + SPACE).replace(RE_CLASS, SPACE);
-	};
-
-	function addClass(elem, className) {
-		if (elem.classList) {
-			var _elem$classList;
-
-			(_elem$classList = elem.classList).add.apply(_elem$classList, className.split(' '));
-		} else {
-			elem.className += ' ' + className;
-		}
-	}
-
-	function removeClass(elem, needle) {
-		needle = needle.trim();
-		if (elem.classList) {
-			var _elem$classList2;
-
-			(_elem$classList2 = elem.classList).remove.apply(_elem$classList2, needle.split(' '));
-		} else {
-			var elemClass = elem.className.trim();
-			var className = norm(elemClass);
-			needle = SPACE + needle + SPACE;
-			while (className.indexOf(needle) >= 0) {
-				className = className.replace(needle, SPACE);
-			}
-			elem.className = className.trim();
-		}
-	}
-
-	var EVENT_NAME_MAP = {
-		transitionend: {
-			transition: 'transitionend',
-			WebkitTransition: 'webkitTransitionEnd',
-			MozTransition: 'mozTransitionEnd',
-			OTransition: 'oTransitionEnd',
-			msTransition: 'MSTransitionEnd'
-		},
-
-		animationend: {
-			animation: 'animationend',
-			WebkitAnimation: 'webkitAnimationEnd',
-			MozAnimation: 'mozAnimationEnd',
-			OAnimation: 'oAnimationEnd',
-			msAnimation: 'MSAnimationEnd'
-		}
-	};
-
-	var endEvents = [];
-
-	function detectEvents() {
-		var testEl = document.createElement('div'),
-		    style = testEl.style;
-
-		if (!('AnimationEvent' in window)) {
-			delete EVENT_NAME_MAP.animationend.animation;
-		}
-
-		if (!('TransitionEvent' in window)) {
-			delete EVENT_NAME_MAP.transitionend.transition;
-		}
-
-		for (var baseEventName in EVENT_NAME_MAP) {
-			var baseEvents = EVENT_NAME_MAP[baseEventName];
-			for (var styleName in baseEvents) {
-				if (styleName in style) {
-					endEvents.push(baseEvents[styleName]);
-					break;
-				}
-			}
-		}
-	}
-
-	if (typeof window !== 'undefined') {
-		detectEvents();
-	}
-
-	function addEndEventListener(node, eventListener) {
-		if (!endEvents.length) {
-			return window.setTimeout(eventListener, 0);
-		}
-		endEvents.forEach(function (endEvent) {
-			node.addEventListener(endEvent, eventListener, false);
-		});
-	}
-
-	function removeEndEventListener(node, eventListener) {
-		if (!endEvents.length) return;
-		endEvents.forEach(function (endEvent) {
-			node.removeEventListener(endEvent, eventListener, false);
-		});
-	}
-
-	var classCallCheck = function classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
-	};
-
-	var inherits = function inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
-		}
-
-		subClass.prototype = Object.create(superClass && superClass.prototype, {
-			constructor: {
-				value: subClass,
-				enumerable: false,
-				writable: true,
-				configurable: true
-			}
-		});
-		if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	};
-
-	var objectWithoutProperties = function objectWithoutProperties(obj, keys) {
-		var target = {};
-
-		for (var i in obj) {
-			if (keys.indexOf(i) >= 0) continue;
-			if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-			target[i] = obj[i];
-		}
-
-		return target;
-	};
-
-	var possibleConstructorReturn = function possibleConstructorReturn(self, call) {
-		if (!self) {
-			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}
-
-		return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	};
-
-	var TICK = 17;
-
-	var CSSTransitionGroupChild = function (_Component) {
-		inherits(CSSTransitionGroupChild, _Component);
-
-		function CSSTransitionGroupChild() {
-			var _temp, _this, _ret;
-
-			classCallCheck(this, CSSTransitionGroupChild);
-
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
-			}
-
-			return _ret = (_temp = (_this = possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.flushClassNameQueue = function () {
-				if (getComponentBase(_this)) {
-					addClass(getComponentBase(_this), _this.classNameQueue.join(' '));
-				}
-				_this.classNameQueue.length = 0;
-				_this.timeout = null;
-			}, _temp), possibleConstructorReturn(_this, _ret);
-		}
-
-		CSSTransitionGroupChild.prototype.transition = function transition(animationType, finishCallback) {
-			var _this2 = this;
-
-			var node = getComponentBase(this),
-			    className = this.props.name[animationType] || this.props.name + '-' + animationType,
-			    activeClassName = this.props.name[animationType + 'Active'] || className + '-active';
-
-			if (this.endListener) {
-				this.endListener();
-			}
-
-			this.endListener = function (e) {
-				if (e && e.target !== node) return;
-
-				removeClass(node, className);
-				removeClass(node, activeClassName);
-
-				removeEndEventListener(node, _this2.endListener);
-				_this2.endListener = null;
-
-				if (finishCallback) {
-					finishCallback();
-				}
-			};
-
-			addEndEventListener(node, this.endListener);
-
-			addClass(node, className);
-
-			this.queueClass(activeClassName);
-		};
-
-		CSSTransitionGroupChild.prototype.queueClass = function queueClass(className) {
-			this.classNameQueue.push(className);
-
-			if (!this.timeout) {
-				this.timeout = setTimeout(this.flushClassNameQueue, TICK);
-			}
-		};
-
-		CSSTransitionGroupChild.prototype.stop = function stop() {
-			if (this.timeout) {
-				clearTimeout(this.timeout);
-				this.classNameQueue.length = 0;
-				this.timeout = null;
-			}
-			if (this.endListener) {
-				this.endListener();
-			}
-		};
-
-		CSSTransitionGroupChild.prototype.componentWillMount = function componentWillMount() {
-			this.classNameQueue = [];
-		};
-
-		CSSTransitionGroupChild.prototype.componentWillUnmount = function componentWillUnmount() {
-			if (this.timeout) {
-				clearTimeout(this.timeout);
-			}
-		};
-
-		CSSTransitionGroupChild.prototype.componentWillEnter = function componentWillEnter(done) {
-			if (this.props.enter) {
-				this.transition('enter', done);
-			} else {
-				done();
-			}
-		};
-
-		CSSTransitionGroupChild.prototype.componentWillLeave = function componentWillLeave(done) {
-			if (this.props.leave) {
-				this.transition('leave', done);
-			} else {
-				done();
-			}
-		};
-
-		CSSTransitionGroupChild.prototype.render = function render() {
-			return onlyChild(this.props.children);
-		};
-
-		return CSSTransitionGroupChild;
-	}(preact.Component);
-
-	var CSSTransitionGroup = function (_Component) {
-		inherits(CSSTransitionGroup, _Component);
-
-		function CSSTransitionGroup(props) {
-			classCallCheck(this, CSSTransitionGroup);
-
-			var _this = possibleConstructorReturn(this, _Component.call(this));
-
-			_this.renderChild = function (child) {
-				var _this$props = _this.props;
-				var transitionName = _this$props.transitionName;
-				var transitionEnter = _this$props.transitionEnter;
-				var transitionLeave = _this$props.transitionLeave;
-				var key = getKey(child);
-				return preact.h(CSSTransitionGroupChild, {
-					key: key,
-					ref: function ref(c) {
-						if (!(_this.refs[key] = c)) child = null;
-					},
-					name: transitionName,
-					enter: transitionEnter,
-					leave: transitionLeave }, child);
-			};
-
-			_this.refs = {};
-			_this.state = {
-				children: (props.children || []).slice()
-			};
-			return _this;
-		}
-
-		CSSTransitionGroup.prototype.shouldComponentUpdate = function shouldComponentUpdate(_, _ref) {
-			var children = _ref.children;
-
-			return children !== this.state.children;
-		};
-
-		CSSTransitionGroup.prototype.componentWillMount = function componentWillMount() {
-			this.currentlyTransitioningKeys = {};
-			this.keysToEnter = [];
-			this.keysToLeave = [];
-		};
-
-		CSSTransitionGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(_ref2) {
-			var _this2 = this;
-
-			var children = _ref2.children;
-			var exclusive = _ref2.exclusive;
-			var showProp = _ref2.showProp;
-
-			var nextChildMapping = filterNullChildren(children || []).slice();
-
-			var prevChildMapping = filterNullChildren(exclusive ? this.props.children : this.state.children);
-
-			var newChildren = mergeChildMappings(prevChildMapping, nextChildMapping);
-
-			if (showProp) {
-				newChildren = newChildren.map(function (c) {
-					if (!c.props[showProp] && isShownInChildren(prevChildMapping, c, showProp)) {
-						var _cloneElement;
-
-						c = preact.cloneElement(c, (_cloneElement = {}, _cloneElement[showProp] = true, _cloneElement));
-					}
-					return c;
-				});
-			}
-
-			if (exclusive) {
-				newChildren.forEach(function (c) {
-					return _this2.stop(getKey(c));
-				});
-			}
-
-			this.setState({ children: newChildren });
-			this.forceUpdate();
-
-			nextChildMapping.forEach(function (c) {
-				var key = c.key;
-				var hasPrev = prevChildMapping && inChildren(prevChildMapping, c);
-				if (showProp) {
-					if (hasPrev) {
-						var showInPrev = isShownInChildren(prevChildMapping, c, showProp),
-						    showInNow = c.props[showProp];
-						if (!showInPrev && showInNow && !_this2.currentlyTransitioningKeys[key]) {
-							_this2.keysToEnter.push(key);
-						}
-					}
-				} else if (!hasPrev && !_this2.currentlyTransitioningKeys[key]) {
-					_this2.keysToEnter.push(key);
-				}
-			});
-
-			prevChildMapping.forEach(function (c) {
-				var key = c.key;
-				var hasNext = nextChildMapping && inChildren(nextChildMapping, c);
-				if (showProp) {
-					if (hasNext) {
-						var showInNext = isShownInChildren(nextChildMapping, c, showProp);
-						var showInNow = c.props[showProp];
-						if (!showInNext && showInNow && !_this2.currentlyTransitioningKeys[key]) {
-							_this2.keysToLeave.push(key);
-						}
-					}
-				} else if (!hasNext && !_this2.currentlyTransitioningKeys[key]) {
-					_this2.keysToLeave.push(key);
-				}
-			});
-		};
-
-		CSSTransitionGroup.prototype.performEnter = function performEnter(key) {
-			var _this3 = this;
-
-			this.currentlyTransitioningKeys[key] = true;
-			var component = this.refs[key];
-			if (component.componentWillEnter) {
-				component.componentWillEnter(function () {
-					return _this3._handleDoneEntering(key);
-				});
-			} else {
-				this._handleDoneEntering(key);
-			}
-		};
-
-		CSSTransitionGroup.prototype._handleDoneEntering = function _handleDoneEntering(key) {
-			delete this.currentlyTransitioningKeys[key];
-			var currentChildMapping = filterNullChildren(this.props.children),
-			    showProp = this.props.showProp;
-			if (!currentChildMapping || !showProp && !inChildrenByKey(currentChildMapping, key) || showProp && !isShownInChildrenByKey(currentChildMapping, key, showProp)) {
-				this.performLeave(key);
-			} else {
-				this.setState({ children: currentChildMapping });
-			}
-		};
-
-		CSSTransitionGroup.prototype.stop = function stop(key) {
-			delete this.currentlyTransitioningKeys[key];
-			var component = this.refs[key];
-			if (component) component.stop();
-		};
-
-		CSSTransitionGroup.prototype.performLeave = function performLeave(key) {
-			var _this4 = this;
-
-			this.currentlyTransitioningKeys[key] = true;
-			var component = this.refs[key];
-			if (component && component.componentWillLeave) {
-				component.componentWillLeave(function () {
-					return _this4._handleDoneLeaving(key);
-				});
-			} else {
-				this._handleDoneLeaving(key);
-			}
-		};
-
-		CSSTransitionGroup.prototype._handleDoneLeaving = function _handleDoneLeaving(key) {
-			delete this.currentlyTransitioningKeys[key];
-			var showProp = this.props.showProp,
-			    currentChildMapping = filterNullChildren(this.props.children);
-			if (showProp && currentChildMapping && isShownInChildrenByKey(currentChildMapping, key, showProp)) {
-				this.performEnter(key);
-			} else if (!showProp && currentChildMapping && inChildrenByKey(currentChildMapping, key)) {
-				this.performEnter(key);
-			} else {
-				this.setState({ children: currentChildMapping });
-			}
-		};
-
-		CSSTransitionGroup.prototype.componentDidUpdate = function componentDidUpdate() {
-			var _this5 = this;
-
-			var keysToEnter = this.keysToEnter;
-			var keysToLeave = this.keysToLeave;
-
-			this.keysToEnter = [];
-			keysToEnter.forEach(function (k) {
-				return _this5.performEnter(k);
-			});
-			this.keysToLeave = [];
-			keysToLeave.forEach(function (k) {
-				return _this5.performLeave(k);
-			});
-		};
-
-		CSSTransitionGroup.prototype.render = function render(_ref3, _ref4) {
-			var Component = _ref3.component;
-			var transitionName = _ref3.transitionName;
-			var transitionEnter = _ref3.transitionEnter;
-			var transitionLeave = _ref3.transitionLeave;
-			var c = _ref3.children;
-			var props = objectWithoutProperties(_ref3, ['component', 'transitionName', 'transitionEnter', 'transitionLeave', 'children']);
-			var children = _ref4.children;
-
-			return preact.h(Component, props, filterNullChildren(children).map(this.renderChild));
-		};
-
-		return CSSTransitionGroup;
-	}(preact.Component);
-	CSSTransitionGroup.defaultProps = {
-		component: 'span',
-		transitionEnter: true,
-		transitionLeave: true
-	};
-
-	return CSSTransitionGroup;
-});
-//# sourceMappingURL=preact-css-transition-group.js.map
-
-/***/ }),
-/* 12 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -1731,203 +1095,112 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 //# sourceMappingURL=preact-transition-group.js.map
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var faderAnimationStart = {
-	opacity: 0
-};
-
-var faderAnimationEnd = {
-	opacity: 1
-};
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-	getEntryAnimation: function getEntryAnimation() {
-		return {
-			animation: [faderAnimationStart, faderAnimationEnd]
-		};
-	},
-	getExitAnimation: function getExitAnimation() {
-		return {
-			animation: [faderAnimationEnd, faderAnimationStart]
-		};
-	}
-});
-
-/***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var poperAnimationStart = {
-	transform: 'scale(0.5)',
-	opacity: 0
-};
-
-var poperAnimationEnd = {
-	transform: 'scale(1)',
-	opacity: 1
-};
-
-/* unused harmony default export */ var _unused_webpack_default_export = ({
-	getEntryAnimation: function getEntryAnimation() {
-		return {
-			animation: [poperAnimationStart, poperAnimationEnd]
-		};
-	},
-	getExitAnimation: function getExitAnimation() {
-		return {
-			animation: [poperAnimationEnd, poperAnimationStart]
-		};
-	}
-});
-
-/***/ }),
 /* 24 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-var scaleDownFromRightEntryAnimationStart = {
-	transform: 'translateX(100%)',
-	opacity: 0
-};
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var scaleDownFromRightEntryAnimationEnd = {
-	transform: 'translateX(0%)',
-	opacity: 1
-};
+(function (global, factory) {
+	( false ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory(__webpack_require__(0)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : global['preact-async-route'] = factory(global.preact);
+})(this, function (preact) {
+	'use strict';
 
-var scaleDownFromRightExitAnimationStart = {
-	transform: 'scale(1)',
-	opacity: 1
-};
-
-var scaleDownFromRightExitAnimationEnd = {
-	transform: 'scale(0.5)',
-	opacity: 0
-};
-
-/* unused harmony default export */ var _unused_webpack_default_export = ({
-	getEntryAnimation: function getEntryAnimation() {
-		return {
-			animation: [scaleDownFromRightEntryAnimationStart, scaleDownFromRightEntryAnimationEnd],
-			duration: 500
-		};
-	},
-	getExitAnimation: function getExitAnimation() {
-		return {
-			animation: [scaleDownFromRightExitAnimationStart, scaleDownFromRightExitAnimationEnd],
-			duration: 700
-		};
+	function _classCallCheck(instance, Constructor) {
+		if (!(instance instanceof Constructor)) {
+			throw new TypeError("Cannot call a class as a function");
+		}
 	}
 
-});
-
-/***/ }),
-/* 25 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var slideLeftEntryAnimationStart = {
-	transform: 'translateX(100%)',
-	opacity: 0
-};
-
-var slideLeftEntryAnimationEnd = {
-	transform: 'translateX(0%)',
-	opacity: 1
-};
-
-var slideLeftExitAnimationStart = {
-	transform: 'translateX(0%)',
-	opacity: 1
-};
-
-var slideLeftExitAnimationEnd = {
-	transform: 'translateX(-100%)',
-	opacity: 0
-};
-
-/* unused harmony default export */ var _unused_webpack_default_export = ({
-	getEntryAnimation: function getEntryAnimation() {
-		return {
-			animation: [slideLeftEntryAnimationStart, slideLeftEntryAnimationEnd]
-		};
-	},
-	getExitAnimation: function getExitAnimation() {
-		return {
-			animation: [slideLeftExitAnimationStart, slideLeftExitAnimationEnd]
-		};
+	function _possibleConstructorReturn(self, call) {
+		if (!self) {
+			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+		}return call && ((typeof call === 'undefined' ? 'undefined' : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
-});
+	function _inherits(subClass, superClass) {
+		if (typeof superClass !== "function" && superClass !== null) {
+			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === 'undefined' ? 'undefined' : _typeof(superClass)));
+		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
 
-/***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+	var AsyncRoute = function (_Component) {
+		_inherits(AsyncRoute, _Component);
 
-"use strict";
-var entryAnimationStart = {
-	transform: 'scale(0.8)',
-	opacity: 0
-};
+		function AsyncRoute() {
+			_classCallCheck(this, AsyncRoute);
 
-var entryAnimationPlacebo2 = {
-	transform: 'scale(0.8)',
-	opacity: 0.,
-	offset: 0.8
-};
+			var _this = _possibleConstructorReturn(this, _Component.call(this));
 
-var entryAnimationEnd = {
-	transform: 'scale(1)',
-	opacity: 1
-};
+			_this.state = {
+				componentData: null
+			};
+			return _this;
+		}
 
-var exitAnimationStart = {
-	transform: 'scale(1)',
-	opacity: 1
-};
+		AsyncRoute.prototype.loadComponent = function loadComponent() {
+			var _this2 = this;
 
-var exitAnimationEnd = {
-	transform: 'scale(2)',
-	opacity: 0.7
-};
+			var componentData = this.props.component(this.props.url, function (_ref) {
+				var component = _ref.component;
 
-/* harmony default export */ __webpack_exports__["a"] = ({
-	getEntryAnimation: function getEntryAnimation() {
-		return {
-			animation: [entryAnimationStart, entryAnimationPlacebo2, entryAnimationEnd],
-			options: {
-				duration: 700
+				// Named param for making callback future proof
+				if (component) {
+					_this2.setState({
+						componentData: component
+					});
+				}
+			});
+
+			// In case returned value was a promise
+			if (componentData && componentData.then) {
+				(function (url) {
+					componentData.then(function (component) {
+						if (url === _this2.props.url) {
+							_this2.setState({
+								componentData: component
+							});
+						}
+					});
+				})(this.props.url);
 			}
 		};
-	},
-	getExitAnimation: function getExitAnimation() {
-		return {
-			animation: [exitAnimationStart, exitAnimationEnd],
-			options: {
-				duration: 700
+
+		AsyncRoute.prototype.componentDidMount = function componentDidMount() {
+			this.loadComponent();
+		};
+
+		AsyncRoute.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+			var _this3 = this;
+
+			if (this.props.url && this.props.url !== nextProps.url) {
+				this.setState({
+					componentData: null
+				}, function () {
+					_this3.loadComponent();
+				});
 			}
 		};
-	}
 
+		AsyncRoute.prototype.render = function render() {
+
+			if (this.state.componentData) {
+				return preact.h(this.state.componentData, this.props);
+			} else if (this.props.loading) {
+				var loadingComponent = this.props.loading();
+				return loadingComponent;
+			}
+			return null;
+		};
+
+		return AsyncRoute;
+	}(preact.Component);
+
+	return AsyncRoute;
 });
+//# sourceMappingURL=index.js.map
 
 /***/ })
-],[10]);
+],[9]);

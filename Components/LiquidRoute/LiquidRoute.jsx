@@ -1,6 +1,7 @@
 import { h, Component, cloneElement } from 'preact';
 import TransitionGroup from 'preact-transition-group';
 import LiquidAnimator from './LiquidAnimator.jsx';
+import AsyncRoute from 'preact-async-route';
 
 let currentAnimation = null;
 
@@ -25,7 +26,7 @@ export default class LiquidRoute extends Component {
 						getExitAnimation={()=>{return this.getExitAnimation()}}
 						key={props.url}
 						onSetCurrentAnimation={()=>{this.setCurrentAnimation()}} {...props}>
-						{h(props.component, props)}
+						<AsyncRoute {...props}/>
 					</LiquidAnimator>
 				</TransitionGroup>
 		);

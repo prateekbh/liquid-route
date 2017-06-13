@@ -1,7 +1,7 @@
 {
   "name": "liquid-routes",
-  "version": "1.0.0",
-  "description": "This library WILL contain what will make animated routes with preact-router as easy as Dwayne The Rock Johnson giving Rockbottom.",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -40,7 +40,6 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "postcss-loader": "^2.0.5",
     "preact": "^8.1.0",
-    "preact-async-route": "^1.0.3",
     "preact-router": "^2.5.2",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.0"

@@ -3,14 +3,8 @@ import Router from 'preact-router';
 import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
-import LiquidRoute from './Components/LiquidRoute/LiquidRoute.jsx'
-import Home from './Components/Home/Home.jsx'
-import Profile from './Components/Profile/Profile.jsx'
-import Fader from './Components/AnimationDefinations/fade';
-import Poper from './Components/AnimationDefinations/pop';
-import SlideLeft from './Components/AnimationDefinations/slideLeft';
-import ScaleDownFromRight from './Components/AnimationDefinations/scaleDownFromRight';
-import UpUpAway from './Components/AnimationDefinations/upUpAway';
+import LiquidRoute, {FadeAnimation, PopAnimation} from '../';
+import AsyncRoute from 'preact-async-route';
 class App extends Component{
 	constructor(){
 		super();
@@ -22,8 +16,16 @@ class App extends Component{
 		return(
 			<div style="position:relative">
 				<Router>
-					<LiquidRoute animator={Fader} path="/" component={Home}/>
-					<LiquidRoute animator={UpUpAway} path="/profile" component={Profile}/>
+					<AsyncRoute animator={FadeAnimation} path="/" component={(url, cb)=>{
+						System.import('./Components/Home/Home.jsx').then(module => {
+							cb(null, module.default);
+						});
+					}}/>
+					<AsyncRoute animator={PopAnimation} path="/profile" component={(url, cb)=>{
+						System.import('./Components/Profile/Profile.jsx').then(module => {
+							cb(null, module.default);
+						});
+					}}/>
 				</Router>
 			</div>
 		);
