@@ -16,15 +16,11 @@ class App extends Component{
 		return(
 			<div style="position:relative">
 				<Router>
-					<AsyncRoute animator={FadeAnimation} path="/" component={(url, cb)=>{
-						System.import('./Components/Home/Home.jsx').then(module => {
-							cb(null, module.default);
-						});
+					<LiquidRoute animator={FadeAnimation} path="/" component={(url, cb)=>{
+						return System.import('./Components/Home/Home.jsx').then(module => module.default);
 					}}/>
-					<AsyncRoute animator={PopAnimation} path="/profile" component={(url, cb)=>{
-						System.import('./Components/Profile/Profile.jsx').then(module => {
-							cb(null, module.default);
-						});
+					<LiquidRoute animator={PopAnimation} path="/profile" component={(url, cb)=>{
+						return System.import('./Components/Profile/Profile.jsx').then(module => module.default);
 					}}/>
 				</Router>
 			</div>
