@@ -22,6 +22,9 @@ class App extends Component{
 					<LiquidRoute animator={PopAnimation} path="/profile" component={(url, cb)=>{
 						return System.import('./Components/Profile/Profile.jsx').then(module => module.default);
 					}}/>
+					<LiquidRoute animator={PopAnimation} path="/profile/:pid" component={(url, cb)=>{
+						return System.import('./Components/Profile/Profile.jsx').then(module => module.default);
+					}}/>
 				</Router>
 			</div>
 		);

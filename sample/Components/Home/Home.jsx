@@ -20,6 +20,8 @@ export default class Home extends Component {
 					<h1 onClick={this.toggleBox.bind(this)}>Home</h1>
 					<p>This is the Home component.</p>
 					<Link href='/profile'>profile</Link>
+					{this.state.showBox && <div>box is there</div>}
+					{!this.state.showBox && <div>box is not there</div>}
 			</div>
 		);
 	}
