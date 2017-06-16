@@ -1,8 +1,8 @@
 import {h, render, Component} from 'preact';
-import Router from 'preact-router';
 import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
+import Router from 'preact-router';
 import LiquidRoute, {FadeAnimation, PopAnimation} from '../';
 import AsyncRoute from 'preact-async-route';
 class App extends Component{
