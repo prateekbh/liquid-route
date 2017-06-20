@@ -15,10 +15,9 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         options: {
-          presets: [["es2015", { modules: false }]],
+          presets: [["es2015", { modules: false, loose: true }]],
           plugins: [
             ["transform-react-jsx", { pragma: "h" }],
-            "transform-object-rest-spread"
           ]
         }
       }
