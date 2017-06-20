@@ -4,23 +4,6 @@ body{
 	background: #000;
 }
 
-.app-page{
-	position: relative;
-}
-
-.lqd-container{
-	position: absolute;
-	left: 0;
-	top: 0px;
-	width:100%;
-	will-change: transform, opacity;
-	z-index: 1;
-}
-
-.lqd-container:first-child{
-	z-index: 2;
-}
-
 h1{
 	margin: 0;
 }
@@ -32,4 +15,9 @@ h1{
 
 .page.profile {
 	background-color: #fcb;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
 }

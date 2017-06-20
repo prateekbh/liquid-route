@@ -10,10 +10,10 @@ export default class LiquidRoute extends Component {
 		super();
 	}
 	getEntryAnimation() {
-		return currentAnimation.getEntryAnimation();
+		return currentAnimation && currentAnimation.getEntryAnimation() || null;
 	}
 	getExitAnimation() {
-		return currentAnimation.getExitAnimation();
+		return currentAnimation && currentAnimation.getExitAnimation() || null;
 	}
 	setCurrentAnimation() {
 		currentAnimation = this.props.animator;

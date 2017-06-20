@@ -37,10 +37,6 @@ const config = {
 		]
 	},
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			minChunks: 2
-		}),
 		extractCSS
 	]
 };

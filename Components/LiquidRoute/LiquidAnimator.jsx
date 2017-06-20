@@ -9,25 +9,23 @@ const defaultOpts = {
 export default class LiquidAnimator extends Component {
 	constructor() {
 		super();
-		this.animationStart = null;
-		this.animationEnd = null;
 	}
 	componentWillEnter(cb){
-		this.props.onSetCurrentAnimation();
-		if(!this.container.animate) {
+		this.props.onSetCurrentAnimation && this.props.onSetCurrentAnimation();
+		const animation = this.props.getEntryAnimation();
+		if(!this.container.animate || !animation) {
 			return cb();
 		}
-		const animation = this.props.getEntryAnimation();
 		const animationOptions = Object.assign({},defaultOpts, animation.options);
 		this.container.animate(animation.animation, animationOptions).onfinish = () => {
 			cb();
 		}
 	}
 	componentWillLeave(cb){
-		if(!this.container.animate) {
+		const animation = this.props.getExitAnimation();
+		if(!this.container.animate || !animation) {
 			return cb();
 		}
-		const animation = this.props.getExitAnimation();
 		const animationOptions = Object.assign({},defaultOpts, animation.options);
 		this.container.animate(animation.animation, animationOptions).onfinish = () => {
 			const reversedAnimation = animation.animation.reverse();
@@ -38,12 +36,14 @@ export default class LiquidAnimator extends Component {
 	}
 	render() {
 		return (
-				<div className='lqd-container'
+			<div className='liquid-container'>
+				<div className='liquid-pageholder'
 					ref={container=>{
 						this.container = container;
 					}}>
 					{this.props.children}
 				</div>
+			</div>
 		);
 	}
 }
