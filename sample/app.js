@@ -13,6 +13,7 @@ import LiquidRoute, {FadeAnimation, PopAnimation, Slideleft} from '../';
 import Home from './Components/Home/Home.jsx';
 import Profile from './Components/Profile/Profile.jsx';
 import AsyncRoute from 'preact-async-route';
+import '../style.css';
 class App extends Component{
 	constructor(){
 		super();

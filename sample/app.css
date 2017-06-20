@@ -9,12 +9,13 @@ h1{
 }
 
 .page{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color:#fff;
 	height: 100vh;
-	background-color: #aed;
-}
-
-.page.profile {
-	background-color: #fcb;
+  height: calc(100vh - 56px);
+	background: tomato;
 }
 
 a {
