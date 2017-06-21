@@ -5,9 +5,11 @@ import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
 import Router, {route} from 'preact-router';
-import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft} from '../';
+import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide} from '../';
 import Fade from './Components/Fade/Fade.jsx';
 import Pop from './Components/Pop/Pop.jsx';
+import Slide from './Components/Slide/Slide.jsx';
+import PushRoute from './Components/PushAndSlide/PushAndSlide.jsx';
 import AsyncRoute from 'preact-async-route';
 import '../style.css';
 class App extends Component{
@@ -33,7 +35,12 @@ class App extends Component{
 					}}/>
 					<LiquidRoute animator={SlideLeft} path="/slide" component={(url, cb)=>{
 						cb({
-							component: Pop,
+							component: Slide,
+						});
+					}}/>
+					<LiquidRoute animator={PushAndSlide} path="/push" component={(url, cb)=>{
+						cb({
+							component: PushRoute,
 						});
 					}}/>
 				</Router>
@@ -54,14 +61,9 @@ class App extends Component{
 						SlideLeft
 					</Tabs.Tab>
 					<Tabs.Tab onClick={()=>{
-						route('/up');
-					}}>
-						Gone Up
-					</Tabs.Tab>
-					<Tabs.Tab onClick={()=>{
 						route('/push');
 					}}>
-						Push and Swipe
+						Push
 					</Tabs.Tab>
         </Tabs>
 			</div>

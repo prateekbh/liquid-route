@@ -1487,10 +1487,13 @@ var Page = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Components_AnimationDefinations_slideLeft__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Components_AnimationDefinations_upUpAway__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Components_AnimationDefinations_pushAndSlide__ = __webpack_require__(46);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__Components_AnimationDefinations_slideLeft__["a"]; });
 /* unused harmony reexport UpUpAway */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_5__Components_AnimationDefinations_pushAndSlide__["a"]; });
+
 
 
 
@@ -2225,7 +2228,7 @@ var entryAnimationStart = {
 
 var entryAnimationPlacebo2 = {
 	transform: 'scale(0.8)',
-	opacity: 0.,
+	opacity: 0,
 	offset: 0.8
 };
 
@@ -4448,10 +4451,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7____ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Components_Fade_Fade_jsx__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Components_Pop_Pop_jsx__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_preact_async_route__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_preact_async_route__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__style_css__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_preact_async_route__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_preact_async_route__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__style_css__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__style_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4459,6 +4464,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
 
 
 
@@ -4508,7 +4515,12 @@ var App = function (_Component) {
 						} }),
 					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["d" /* SlideLeft */], path: '/slide', component: function component(url, cb) {
 							cb({
-								component: __WEBPACK_IMPORTED_MODULE_9__Components_Pop_Pop_jsx__["a" /* default */]
+								component: __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__["a" /* default */]
+							});
+						} }),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["e" /* PushAndSlide */], path: '/push', component: function component(url, cb) {
+							cb({
+								component: __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__["a" /* default */]
 							});
 						} })
 				),
@@ -4539,16 +4551,9 @@ var App = function (_Component) {
 					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
 						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/up');
-							} },
-						'Gone Up'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
 								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/push');
 							} },
-						'Push and Swipe'
+						'Push'
 					)
 				)
 			);
@@ -4559,6 +4564,142 @@ var App = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["render"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(App, null), document.querySelector('.app'));
+
+/***/ }),
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var slideLeftExitAnimationStart = {
+	transform: 'scale(1) translateX(0%)'
+};
+
+var slideLeftExitAnimationPush = {
+	transform: 'scale(0.5) translateX(0%)'
+};
+
+var slideLeftExitAnimationEnd = {
+	transform: 'scale(0.5) translateX(-200%)'
+};
+
+var slideLeftExitAnimationPlacebo = {
+	transform: 'scale(0.5) translateX(200%)'
+};
+
+var slideLeftEntryAnimationStart = {
+	transform: 'scale(0.5) translateX(200%)',
+	offset: 0.6
+};
+
+var slideLeftEntryAnimationZoom = {
+	transform: 'scale(0.5) translateX(0%)'
+};
+
+var slideLeftEntryAnimationEnd = {
+	transform: 'scale(1) translateX(0%)'
+};
+
+/* harmony default export */ __webpack_exports__["a"] = {
+	getEntryAnimation: function getEntryAnimation() {
+		return {
+			animation: [slideLeftExitAnimationPlacebo, slideLeftEntryAnimationStart, slideLeftEntryAnimationZoom, slideLeftEntryAnimationEnd],
+			options: {
+				duration: 1400
+			}
+		};
+	},
+	getExitAnimation: function getExitAnimation() {
+		return {
+			animation: [slideLeftExitAnimationStart, slideLeftExitAnimationPush, slideLeftExitAnimationEnd],
+			options: {
+				duration: 900
+			}
+		};
+	}
+
+};
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Page_jsx__ = __webpack_require__(11);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Slide = function (_Page) {
+	_inherits(Slide, _Page);
+
+	function Slide() {
+		_classCallCheck(this, Slide);
+
+		var _this = _possibleConstructorReturn(this, (Slide.__proto__ || Object.getPrototypeOf(Slide)).call(this));
+
+		_this.state = {
+			name: 'Push',
+			bgColor: 'CRIMSON'
+		};
+		return _this;
+	}
+
+	return Slide;
+}(__WEBPACK_IMPORTED_MODULE_1__Page_jsx__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = Slide;
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Page_jsx__ = __webpack_require__(11);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var Slide = function (_Page) {
+	_inherits(Slide, _Page);
+
+	function Slide() {
+		_classCallCheck(this, Slide);
+
+		var _this = _possibleConstructorReturn(this, (Slide.__proto__ || Object.getPrototypeOf(Slide)).call(this));
+
+		_this.state = {
+			name: 'Pop',
+			bgColor: 'STEELBLUE'
+		};
+		return _this;
+	}
+
+	return Slide;
+}(__WEBPACK_IMPORTED_MODULE_1__Page_jsx__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = Slide;
 
 /***/ })
 /******/ ]);

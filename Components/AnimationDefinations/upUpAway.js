@@ -6,7 +6,7 @@ const entryAnimationStart = {
 
 const entryAnimationPlacebo2 = {
 	transform: 'scale(0.8)',
-	opacity: 0.,
+	opacity: 0,
 	offset: 0.8
 };
 
