@@ -6,7 +6,7 @@ export default class UpAndAway extends Page {
 		super();
 		this.state = {
 			name: 'UpAndAway',
-			bgColor: 'CRIMSON'
+			bgColor: 'PURPLE'
 		};
 	}
 }

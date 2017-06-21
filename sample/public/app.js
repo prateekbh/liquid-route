@@ -1491,7 +1491,7 @@ var Page = function (_Component) {
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__Components_AnimationDefinations_slideLeft__["a"]; });
-/* unused harmony reexport UpUpAway */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_4__Components_AnimationDefinations_upUpAway__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_5__Components_AnimationDefinations_pushAndSlide__["a"]; });
 
 
@@ -2243,16 +2243,16 @@ var exitAnimationStart = {
 };
 
 var exitAnimationEnd = {
-	transform: 'scale(2)',
-	opacity: 0.7
+	transform: 'scale(3)',
+	opacity: 0.2
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = {
+/* harmony default export */ __webpack_exports__["a"] = {
 	getEntryAnimation: function getEntryAnimation() {
 		return {
 			animation: [entryAnimationStart, entryAnimationPlacebo2, entryAnimationEnd],
 			options: {
-				duration: 700
+				duration: 500
 			}
 		};
 	},
@@ -4453,10 +4453,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Components_Pop_Pop_jsx__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_preact_async_route__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_preact_async_route__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__style_css__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__style_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Components_UpAndAway_UpAndAway_jsx__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_preact_async_route__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_preact_async_route__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__style_css__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__style_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4464,6 +4465,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -4518,9 +4520,14 @@ var App = function (_Component) {
 								component: __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__["a" /* default */]
 							});
 						} }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["e" /* PushAndSlide */], path: '/push', component: function component(url, cb) {
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["e" /* PushAndSlide */], path: '/pushaway', component: function component(url, cb) {
 							cb({
 								component: __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__["a" /* default */]
+							});
+						} }),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["f" /* UpUpAway */], path: '/pushup', component: function component(url, cb) {
+							cb({
+								component: __WEBPACK_IMPORTED_MODULE_12__Components_UpAndAway_UpAndAway_jsx__["a" /* default */]
 							});
 						} })
 				),
@@ -4551,9 +4558,16 @@ var App = function (_Component) {
 					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
 						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
 						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/push');
+								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/pushaway');
 							} },
-						'Push'
+						'Push Side'
+					),
+					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+						{ onClick: function onClick() {
+								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/pushup');
+							} },
+						'Push Up'
 					)
 				)
 			);
@@ -4700,6 +4714,43 @@ var Slide = function (_Page) {
 }(__WEBPACK_IMPORTED_MODULE_1__Page_jsx__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = Slide;
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Page_jsx__ = __webpack_require__(11);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var UpAndAway = function (_Page) {
+	_inherits(UpAndAway, _Page);
+
+	function UpAndAway() {
+		_classCallCheck(this, UpAndAway);
+
+		var _this = _possibleConstructorReturn(this, (UpAndAway.__proto__ || Object.getPrototypeOf(UpAndAway)).call(this));
+
+		_this.state = {
+			name: 'UpAndAway',
+			bgColor: 'PURPLE'
+		};
+		return _this;
+	}
+
+	return UpAndAway;
+}(__WEBPACK_IMPORTED_MODULE_1__Page_jsx__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = UpAndAway;
 
 /***/ })
 /******/ ]);

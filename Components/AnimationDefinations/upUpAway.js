@@ -22,8 +22,8 @@ const exitAnimationStart = {
 };
 
 const exitAnimationEnd = {
-	transform: 'scale(2)',
-	opacity: 0.7,
+	transform: 'scale(3)',
+	opacity: 0.2,
 };
 
 export default {
@@ -31,7 +31,7 @@ export default {
 		return {
 			animation: [entryAnimationStart, entryAnimationPlacebo2, entryAnimationEnd],
 			options: {
-				duration: 700,
+				duration: 500,
 			}
 		}
 	},

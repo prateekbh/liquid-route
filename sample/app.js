@@ -5,11 +5,12 @@ import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
 import Router, {route} from 'preact-router';
-import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide} from '../';
+import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide, UpUpAway} from '../';
 import Fade from './Components/Fade/Fade.jsx';
 import Pop from './Components/Pop/Pop.jsx';
 import Slide from './Components/Slide/Slide.jsx';
 import PushRoute from './Components/PushAndSlide/PushAndSlide.jsx';
+import UpAwayRoute from './Components/UpAndAway/UpAndAway.jsx';
 import AsyncRoute from 'preact-async-route';
 import '../style.css';
 class App extends Component{
@@ -38,9 +39,14 @@ class App extends Component{
 							component: Slide,
 						});
 					}}/>
-					<LiquidRoute animator={PushAndSlide} path="/push" component={(url, cb)=>{
+					<LiquidRoute animator={PushAndSlide} path="/pushaway" component={(url, cb)=>{
 						cb({
 							component: PushRoute,
+						});
+					}}/>
+					<LiquidRoute animator={UpUpAway} path="/pushup" component={(url, cb)=>{
+						cb({
+							component: UpAwayRoute,
 						});
 					}}/>
 				</Router>
@@ -61,9 +67,14 @@ class App extends Component{
 						SlideLeft
 					</Tabs.Tab>
 					<Tabs.Tab onClick={()=>{
-						route('/push');
+						route('/pushaway');
 					}}>
-						Push
+						Push Side
+					</Tabs.Tab>
+					<Tabs.Tab onClick={()=>{
+						route('/pushup');
+					}}>
+						Push Up
 					</Tabs.Tab>
         </Tabs>
 			</div>
