@@ -2,13 +2,13 @@
 const webpack = require("webpack");
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const extractCSS = new ExtractTextPlugin('[name].css');
 
 const config = {
 	entry: {
 	 app: './app.js',
-	 vendor: ['preact']
 	},
 	output: {
 		path: __dirname + '/public',

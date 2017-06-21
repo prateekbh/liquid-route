@@ -14,8 +14,15 @@ h1{
 	justify-content: center;
 	color:#fff;
 	height: 100vh;
-  height: calc(100vh - 56px);
-	background: tomato;
+}
+
+.mdc-tab-bar{
+	position: absolute;
+	z-index: 10;
+	background: #fff;
+	width: 100%;
+	bottom: 0;
+	left: 0;
 }
 
 a {
