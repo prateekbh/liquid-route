@@ -5,7 +5,7 @@ import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
 import Router, {route} from 'preact-router';
-import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide, UpUpAway} from '../';
+import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide, Flip} from '../';
 import Fade from './Components/Fade/Fade.jsx';
 import Pop from './Components/Pop/Pop.jsx';
 import Slide from './Components/Slide/Slide.jsx';
@@ -44,7 +44,7 @@ class App extends Component{
 							component: PushRoute,
 						});
 					}}/>
-					<LiquidRoute animator={UpUpAway} path="/pushup" component={(url, cb)=>{
+					<LiquidRoute animator={Flip} path="/pushup" component={(url, cb)=>{
 						cb({
 							component: UpAwayRoute,
 						});
