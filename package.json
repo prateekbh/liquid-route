@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-	"module": "index.js",
+  "module": "index.js",
   "scripts": {
-    "build": "webpack -p",
+    "build": "npm run pretty && webpack -p",
+		"pretty": "./node_modules/.bin/prettier --single-quote --write **/*.js **/*.jsx",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -44,6 +45,7 @@
     "postcss-loader": "^2.0.5",
     "preact": "^8.1.0",
     "preact-router": "^2.5.2",
+    "prettier": "^1.4.4",
     "style-loader": "^0.18.1",
     "webpack": "^3.0.0"
   },
