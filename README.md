@@ -14,7 +14,7 @@ This mainly consist of the following animation objects
 6. AppearFromRightAnimation: Next route will fade and appear from right and sit on top of current route.
 
 ## Sample
-![sample usage of liquid-route](https://im.ezgif.com/tmp/ezgif-1-43b21b18f3.gif)
+<img src="https://im.ezgif.com/tmp/ezgif-1-43b21b18f3.gif" />
 
 ## Route element
 `liquid-route` is the route component which you would need to use in order animate between routes. It takes a prop named animator which is a animation object
