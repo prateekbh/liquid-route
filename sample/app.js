@@ -5,12 +5,13 @@ import 'preact-material-components/Typography/style.css';
 import 'preact-material-components/Theme/style.css';
 import './app.css';
 import Router, {route} from 'preact-router';
-import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide, Flip} from '../';
+import LiquidRoute, {FadeAnimation, PopAnimation, SlideLeft, PushAndSlide, AppearFromBottomAnimation, AppearFromRightAnimation} from '../';
 import Fade from './Components/Fade/Fade.jsx';
 import Pop from './Components/Pop/Pop.jsx';
 import Slide from './Components/Slide/Slide.jsx';
 import PushRoute from './Components/PushAndSlide/PushAndSlide.jsx';
-import UpAwayRoute from './Components/UpAndAway/UpAndAway.jsx';
+import AppearFromRightPage from './Components/AppearFromRight/AppearFromRight.jsx';
+import AppearFromBottomPage from './Components/AppearFromBottom/AppearFromBottom.jsx';
 import AsyncRoute from 'preact-async-route';
 import '../style.css';
 class App extends Component{
@@ -44,9 +45,14 @@ class App extends Component{
 							component: PushRoute,
 						});
 					}}/>
-					<LiquidRoute animator={Flip} path="/pushup" component={(url, cb)=>{
+					<LiquidRoute animator={AppearFromRightAnimation} path="/appearright" component={(url, cb)=>{
 						cb({
-							component: UpAwayRoute,
+							component: AppearFromRightPage,
+						});
+					}}/>
+					<LiquidRoute animator={AppearFromBottomAnimation} path="/appearbottom" component={(url, cb)=>{
+						cb({
+							component: AppearFromBottomPage,
 						});
 					}}/>
 				</Router>
@@ -72,9 +78,14 @@ class App extends Component{
 						Push Side
 					</Tabs.Tab>
 					<Tabs.Tab onClick={()=>{
-						route('/pushup');
+						route('/appearright');
 					}}>
-						Push Up
+						SlideFromRight
+					</Tabs.Tab>
+					<Tabs.Tab onClick={()=>{
+						route('/appearbottom');
+					}}>
+						SlideFromBottom
 					</Tabs.Tab>
         </Tabs>
 			</div>

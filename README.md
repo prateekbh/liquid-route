@@ -8,8 +8,13 @@ This mainly consist of the following animation objects
 
 1. FaderAnimation: Next route will fade in and current will fade out.
 2. PopAnimation: Next route will pop from center and current route will implode.
-3. SlideLeftAnimation: Next route will slide from right while current one slides to lseft.
-3. PushNSlideAnimation: Routes will scale down and slide
+3. SlideLeftAnimation: Next route will slide from right while current one slides to left.
+4. PushNSlideAnimation: Routes will scale down and slide.
+5. AppearFromBottomAnimation: Next route will fade and appear from bottom and sit on top of current route.
+6. AppearFromRightAnimation: Next route will fade and appear from right and sit on top of current route.
+
+## Sample
+![sample usage of liquid-route](https://im.ezgif.com/tmp/ezgif-1-43b21b18f3.gif)
 
 ## Route element
 `liquid-route` is the route component which you would need to use in order animate between routes. It takes a prop named animator which is a animation object

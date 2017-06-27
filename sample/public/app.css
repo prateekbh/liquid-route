@@ -1337,7 +1337,6 @@ h1{
 	min-height: 100vh;
 	padding: 16px;
 	flex-direction: column;
-	backface-visibility: hidden;
 }
 
 .mdc-tab-bar{
