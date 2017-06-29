@@ -32,21 +32,9 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <LiquidRoute
-            animator={FadeAnimation}
-            path="/"
-            component={Fade}
-          />
-          <LiquidRoute
-            animator={PopAnimation}
-            path="/pop"
-            component={Pop}
-          />
-          <LiquidRoute
-            animator={SlideLeft}
-            path="/slide"
-            component={Slide}
-          />
+          <LiquidRoute animator={FadeAnimation} path="/" component={Fade} />
+          <LiquidRoute animator={PopAnimation} path="/pop" component={Pop} />
+          <LiquidRoute animator={SlideLeft} path="/slide" component={Slide} />
           <LiquidRoute
             animator={PushAndSlide}
             path="/pushaway"
