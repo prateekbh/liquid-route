@@ -35,56 +35,32 @@ class App extends Component {
           <LiquidRoute
             animator={FadeAnimation}
             path="/"
-            component={(url, cb) => {
-              cb({
-                component: Fade
-              });
-            }}
+            component={Fade}
           />
           <LiquidRoute
             animator={PopAnimation}
             path="/pop"
-            component={(url, cb) => {
-              cb({
-                component: Pop
-              });
-            }}
+            component={Pop}
           />
           <LiquidRoute
             animator={SlideLeft}
             path="/slide"
-            component={(url, cb) => {
-              cb({
-                component: Slide
-              });
-            }}
+            component={Slide}
           />
           <LiquidRoute
             animator={PushAndSlide}
             path="/pushaway"
-            component={(url, cb) => {
-              cb({
-                component: PushRoute
-              });
-            }}
+            component={PushRoute}
           />
           <LiquidRoute
             animator={AppearFromRightAnimation}
             path="/appearright"
-            component={(url, cb) => {
-              cb({
-                component: AppearFromRightPage
-              });
-            }}
+            component={AppearFromRightPage}
           />
           <LiquidRoute
             animator={AppearFromBottomAnimation}
             path="/appearbottom"
-            component={(url, cb) => {
-              cb({
-                component: AppearFromBottomPage
-              });
-            }}
+            component={AppearFromBottomPage}
           />
         </Router>
         <Tabs className="demo-tabs" indicator-accent={true}>

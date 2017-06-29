@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 42);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -808,7 +808,12 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 		AsyncRoute.prototype.loadComponent = function loadComponent() {
 			var _this2 = this;
 
-			var componentData = this.props.component(this.props.url, function (_ref) {
+			if (this.props.component) {
+				return this.setState({
+					componentData: this.props.component
+				});
+			}
+			var componentData = this.props.getComponent(this.props.url, function (_ref) {
 				var component = _ref.component;
 
 				// Named param for making callback future proof
@@ -821,6 +826,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 			// In case returned value was a promise
 			if (componentData && componentData.then) {
+				// IIFE to check if a later ending promise was creating a race condition
+				// Check test case for more info
 				(function (url) {
 					componentData.then(function (component) {
 						if (url === _this2.props.url) {
@@ -901,7 +908,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(6);
 /* unused harmony reexport MDCRippleFoundation */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCRipple; });
@@ -1175,7 +1182,7 @@ var cssClasses = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ripple__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(39);
 /* unused harmony reexport MDCTabFoundation */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTab; });
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -1435,13 +1442,13 @@ var MaterialComponent = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Components_LiquidRoute_LiquidRoute_jsx__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Components_AnimationDefinations_slideLeft__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Components_AnimationDefinations_appearFromRight__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Components_AnimationDefinations_appearFromBottom__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Components_AnimationDefinations_pushAndSlide__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Components_LiquidRoute_LiquidRoute_jsx__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Components_AnimationDefinations_slideLeft__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Components_AnimationDefinations_appearFromRight__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Components_AnimationDefinations_appearFromBottom__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Components_AnimationDefinations_pushAndSlide__ = __webpack_require__(29);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__Components_AnimationDefinations_fade__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__Components_AnimationDefinations_pop__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__Components_AnimationDefinations_slideLeft__["a"]; });
@@ -1467,8 +1474,8 @@ var MaterialComponent = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MaterialComponent__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tabs__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__List__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_tabs__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__List__ = __webpack_require__(40);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1993,55 +2000,55 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var AppearFromBottom = function (_Component) {
-	_inherits(AppearFromBottom, _Component);
+  _inherits(AppearFromBottom, _Component);
 
-	function AppearFromBottom() {
-		_classCallCheck(this, AppearFromBottom);
+  function AppearFromBottom() {
+    _classCallCheck(this, AppearFromBottom);
 
-		return _possibleConstructorReturn(this, (AppearFromBottom.__proto__ || Object.getPrototypeOf(AppearFromBottom)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (AppearFromBottom.__proto__ || Object.getPrototypeOf(AppearFromBottom)).apply(this, arguments));
+  }
 
-	_createClass(AppearFromBottom, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', style: 'background-color: LightCoral' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--display2' },
-						'Liquid route'
-					)
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--title' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.'
-						),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-						)
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(AppearFromBottom, [{
+    key: "render",
+    value: function render(props) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        "div",
+        { className: "page", style: "background-color: LightCoral" },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--display2" },
+            "Liquid route"
+          )
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--title" },
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur."
+            ),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-	return AppearFromBottom;
+  return AppearFromBottom;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = AppearFromBottom;
@@ -2064,55 +2071,55 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var AppearFromRight = function (_Component) {
-	_inherits(AppearFromRight, _Component);
+  _inherits(AppearFromRight, _Component);
 
-	function AppearFromRight() {
-		_classCallCheck(this, AppearFromRight);
+  function AppearFromRight() {
+    _classCallCheck(this, AppearFromRight);
 
-		return _possibleConstructorReturn(this, (AppearFromRight.__proto__ || Object.getPrototypeOf(AppearFromRight)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (AppearFromRight.__proto__ || Object.getPrototypeOf(AppearFromRight)).apply(this, arguments));
+  }
 
-	_createClass(AppearFromRight, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', style: 'background-color: PERU' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--display2' },
-						'Liquid route'
-					)
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--title' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
-						),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-						)
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(AppearFromRight, [{
+    key: "render",
+    value: function render(props) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        "div",
+        { className: "page", style: "background-color: PERU" },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--display2" },
+            "Liquid route"
+          )
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--title" },
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+            ),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-	return AppearFromRight;
+  return AppearFromRight;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = AppearFromRight;
@@ -2135,48 +2142,48 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var Fade = function (_Component) {
-	_inherits(Fade, _Component);
+  _inherits(Fade, _Component);
 
-	function Fade() {
-		_classCallCheck(this, Fade);
+  function Fade() {
+    _classCallCheck(this, Fade);
 
-		return _possibleConstructorReturn(this, (Fade.__proto__ || Object.getPrototypeOf(Fade)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (Fade.__proto__ || Object.getPrototypeOf(Fade)).apply(this, arguments));
+  }
 
-	_createClass(Fade, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', style: 'background-color: DARKORCHID' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--display2' },
-						'Liquid route doig Fade'
-					)
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--title' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
-						),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null)
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(Fade, [{
+    key: "render",
+    value: function render(props) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        "div",
+        { className: "page", style: "background-color: DARKORCHID" },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--display2" },
+            "Liquid route doig Fade"
+          )
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--title" },
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            ),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null)
+          )
+        )
+      );
+    }
+  }]);
 
-	return Fade;
+  return Fade;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = Fade;
@@ -2199,55 +2206,55 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var PushAndSlide = function (_Component) {
-	_inherits(PushAndSlide, _Component);
+  _inherits(PushAndSlide, _Component);
 
-	function PushAndSlide() {
-		_classCallCheck(this, PushAndSlide);
+  function PushAndSlide() {
+    _classCallCheck(this, PushAndSlide);
 
-		return _possibleConstructorReturn(this, (PushAndSlide.__proto__ || Object.getPrototypeOf(PushAndSlide)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (PushAndSlide.__proto__ || Object.getPrototypeOf(PushAndSlide)).apply(this, arguments));
+  }
 
-	_createClass(PushAndSlide, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', style: 'background-color: DARKORCHID' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--display2' },
-						'Liquid route doing Pop'
-					)
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--title' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
-						),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.'
-						)
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(PushAndSlide, [{
+    key: "render",
+    value: function render(props) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        "div",
+        { className: "page", style: "background-color: DARKORCHID" },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--display2" },
+            "Liquid route doing Pop"
+          )
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--title" },
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            ),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident."
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-	return PushAndSlide;
+  return PushAndSlide;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = PushAndSlide;
@@ -2270,64 +2277,129 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var PushAndSlide = function (_Component) {
-	_inherits(PushAndSlide, _Component);
+  _inherits(PushAndSlide, _Component);
 
-	function PushAndSlide() {
-		_classCallCheck(this, PushAndSlide);
+  function PushAndSlide() {
+    _classCallCheck(this, PushAndSlide);
 
-		return _possibleConstructorReturn(this, (PushAndSlide.__proto__ || Object.getPrototypeOf(PushAndSlide)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (PushAndSlide.__proto__ || Object.getPrototypeOf(PushAndSlide)).apply(this, arguments));
+  }
 
-	_createClass(PushAndSlide, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', style: 'background-color: DARKORCHID' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--display2' },
-						'Liquid route doing push and slide'
-					)
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--title' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?'
-						),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
-						)
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(PushAndSlide, [{
+    key: "render",
+    value: function render(props) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        "div",
+        { className: "page", style: "background-color: DARKORCHID" },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--display2" },
+            "Liquid route doing push and slide"
+          )
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--title" },
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?"
+            ),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-	return PushAndSlide;
+  return PushAndSlide;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = PushAndSlide;
 
 /***/ }),
 /* 19 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Slide = function (_Component) {
+  _inherits(Slide, _Component);
+
+  function Slide() {
+    _classCallCheck(this, Slide);
+
+    return _possibleConstructorReturn(this, (Slide.__proto__ || Object.getPrototypeOf(Slide)).apply(this, arguments));
+  }
+
+  _createClass(Slide, [{
+    key: "render",
+    value: function render(props) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        "div",
+        { className: "page", style: "background-color: DARKORCHID" },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--display2" },
+            "Liquid route"
+          )
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          "div",
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            "div",
+            { className: "mdc-typography--title" },
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+            ),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])("br", null),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+              "div",
+              null,
+              "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis...."
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Slide;
+}(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = Slide;
 
 /***/ }),
 /* 20 */
@@ -2355,6 +2427,12 @@ var PushAndSlide = function (_Component) {
 
 /***/ }),
 /* 24 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2391,7 +2469,7 @@ var slideLeftExitAnimationEnd = {
 };
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2428,7 +2506,7 @@ var slideLeftExitAnimationEnd = {
 };
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2454,7 +2532,7 @@ var faderAnimationEnd = {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2482,7 +2560,7 @@ var poperAnimationEnd = {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2536,7 +2614,7 @@ var slideLeftEntryAnimationEnd = {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2575,7 +2653,7 @@ var slideLeftExitAnimationEnd = {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2592,84 +2670,89 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var defaultOpts = {
-	duration: 300,
-	fill: 'forwards',
-	easing: 'ease-out'
+  duration: 300,
+  fill: 'forwards',
+  easing: 'ease-out'
 };
 
 var LiquidAnimator = function (_Component) {
-	_inherits(LiquidAnimator, _Component);
+  _inherits(LiquidAnimator, _Component);
 
-	function LiquidAnimator() {
-		_classCallCheck(this, LiquidAnimator);
+  function LiquidAnimator() {
+    _classCallCheck(this, LiquidAnimator);
 
-		return _possibleConstructorReturn(this, (LiquidAnimator.__proto__ || Object.getPrototypeOf(LiquidAnimator)).call(this));
-	}
+    return _possibleConstructorReturn(this, (LiquidAnimator.__proto__ || Object.getPrototypeOf(LiquidAnimator)).call(this));
+  }
 
-	_createClass(LiquidAnimator, [{
-		key: 'componentWillEnter',
-		value: function componentWillEnter(cb) {
-			this.props.onSetCurrentAnimation && this.props.onSetCurrentAnimation();
-			var animation = this.props.getEntryAnimation();
-			if (!this.container.animate || !animation) {
-				return cb();
-			}
-			var animationOptions = Object.assign({}, defaultOpts, animation.options);
-			this.container.animate(animation.animation, animationOptions).onfinish = function () {
-				cb();
-			};
-		}
-	}, {
-		key: 'componentWillLeave',
-		value: function componentWillLeave(cb) {
-			var _this2 = this;
+  _createClass(LiquidAnimator, [{
+    key: 'componentWillEnter',
+    value: function componentWillEnter(cb) {
+      this.props.onSetCurrentAnimation && this.props.onSetCurrentAnimation();
+      var animation = this.props.getEntryAnimation();
+      if (!this.container.animate || !animation) {
+        return cb();
+      }
+      var animationOptions = Object.assign({}, defaultOpts, animation.options);
+      this.container.animate(animation.animation, animationOptions).onfinish = function () {
+        cb();
+      };
+    }
+  }, {
+    key: 'componentWillLeave',
+    value: function componentWillLeave(cb) {
+      var _this2 = this;
 
-			var animation = this.props.getExitAnimation();
-			if (!this.container.animate || !animation) {
-				return cb();
-			}
-			var animationOptions = Object.assign({}, defaultOpts, animation.options);
-			this.container.animate(animation.animation, animationOptions).onfinish = function () {
-				var reversedAnimation = animation.animation.reverse();
-				_this2.container.animate(reversedAnimation, { duration: 1, fill: 'forwards' });
-				cb();
-			};
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this3 = this;
+      var animation = this.props.getExitAnimation();
+      if (!this.container.animate || !animation) {
+        return cb();
+      }
+      var animationOptions = Object.assign({}, defaultOpts, animation.options);
+      this.container.animate(animation.animation, animationOptions).onfinish = function () {
+        var reversedAnimation = animation.animation.reverse();
+        _this2.container.animate(reversedAnimation, {
+          duration: 1,
+          fill: 'forwards'
+        });
+        cb();
+      };
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
 
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'liquid-container' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					{ className: 'liquid-pageholder',
-						ref: function ref(container) {
-							_this3.container = container;
-						} },
-					this.props.children
-				)
-			);
-		}
-	}]);
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        'div',
+        { className: 'liquid-container' },
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          'div',
+          {
+            className: 'liquid-pageholder',
+            ref: function ref(container) {
+              _this3.container = container;
+            }
+          },
+          this.props.children
+        )
+      );
+    }
+  }]);
 
-	return LiquidAnimator;
+  return LiquidAnimator;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = LiquidAnimator;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_preact_transition_group__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_async_route__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_async_route__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2690,63 +2773,64 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var currentAnimation = null;
 
 var LiquidRoute = function (_Component) {
-	_inherits(LiquidRoute, _Component);
+  _inherits(LiquidRoute, _Component);
 
-	function LiquidRoute() {
-		_classCallCheck(this, LiquidRoute);
+  function LiquidRoute() {
+    _classCallCheck(this, LiquidRoute);
 
-		return _possibleConstructorReturn(this, (LiquidRoute.__proto__ || Object.getPrototypeOf(LiquidRoute)).call(this));
-	}
+    return _possibleConstructorReturn(this, (LiquidRoute.__proto__ || Object.getPrototypeOf(LiquidRoute)).call(this));
+  }
 
-	_createClass(LiquidRoute, [{
-		key: 'getEntryAnimation',
-		value: function getEntryAnimation() {
-			return currentAnimation && currentAnimation.getEntryAnimation() || null;
-		}
-	}, {
-		key: 'getExitAnimation',
-		value: function getExitAnimation() {
-			return currentAnimation && currentAnimation.getExitAnimation() || null;
-		}
-	}, {
-		key: 'setCurrentAnimation',
-		value: function setCurrentAnimation() {
-			currentAnimation = this.props.animator;
-		}
-	}, {
-		key: 'render',
-		value: function render(props) {
-			var _this2 = this;
+  _createClass(LiquidRoute, [{
+    key: 'getEntryAnimation',
+    value: function getEntryAnimation() {
+      return currentAnimation && currentAnimation.getEntryAnimation() || null;
+    }
+  }, {
+    key: 'getExitAnimation',
+    value: function getExitAnimation() {
+      return currentAnimation && currentAnimation.getExitAnimation() || null;
+    }
+  }, {
+    key: 'setCurrentAnimation',
+    value: function setCurrentAnimation() {
+      currentAnimation = this.props.animator;
+    }
+  }, {
+    key: 'render',
+    value: function render(props) {
+      var _this2 = this;
 
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				__WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
-				null,
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
-					_extends({
-						getEntryAnimation: function getEntryAnimation() {
-							return _this2.getEntryAnimation();
-						},
-						getExitAnimation: function getExitAnimation() {
-							return _this2.getExitAnimation();
-						},
-						key: props.url,
-						onSetCurrentAnimation: function onSetCurrentAnimation() {
-							_this2.setCurrentAnimation();
-						} }, props),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_3_preact_async_route___default.a, props)
-				)
-			);
-		}
-	}]);
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        __WEBPACK_IMPORTED_MODULE_1_preact_transition_group___default.a,
+        null,
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          __WEBPACK_IMPORTED_MODULE_2__LiquidAnimator_jsx__["a" /* default */],
+          _extends({
+            getEntryAnimation: function getEntryAnimation() {
+              return _this2.getEntryAnimation();
+            },
+            getExitAnimation: function getExitAnimation() {
+              return _this2.getExitAnimation();
+            },
+            key: props.url,
+            onSetCurrentAnimation: function onSetCurrentAnimation() {
+              _this2.setCurrentAnimation();
+            }
+          }, props),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_3_preact_async_route___default.a, props)
+        )
+      );
+    }
+  }]);
 
-	return LiquidRoute;
+  return LiquidRoute;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = LiquidRoute;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2889,7 +2973,7 @@ function getCorrectPropertyName(windowObj, eventType) {
 }
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2942,12 +3026,12 @@ var numbers = {
 };
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(6);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -3443,14 +3527,14 @@ var MDCRippleFoundation = function (_MDCFoundation) {
 /* harmony default export */ __webpack_exports__["a"] = MDCRippleFoundation;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tab__ = __webpack_require__(9);
 /* unused harmony reexport MDCTabFoundation */
 /* unused harmony reexport MDCTab */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tab_bar__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tab_bar__ = __webpack_require__(38);
 /* unused harmony reexport MDCTabBarFoundation */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__tab_bar__["a"]; });
 /**
@@ -3473,12 +3557,12 @@ var MDCRippleFoundation = function (_MDCFoundation) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_animation__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_animation__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(7);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -3717,14 +3801,14 @@ var MDCTabBarFoundation = function (_MDCFoundation) {
 /* harmony default export */ __webpack_exports__["a"] = MDCTabBarFoundation;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tab__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__foundation__ = __webpack_require__(37);
 /* unused harmony reexport MDCTabBarFoundation */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MDCTabBar; });
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -3908,7 +3992,7 @@ var MDCTabBar = function (_MDCComponent) {
 }(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4058,7 +4142,7 @@ var MDCTabFoundation = function (_MDCFoundation) {
 /* harmony default export */ __webpack_exports__["a"] = MDCTabFoundation;
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4376,7 +4460,7 @@ List.SecondaryText = ListSecondaryText;
 /* unused harmony default export */ var _unused_webpack_default_export = List;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -4738,7 +4822,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 //# sourceMappingURL=preact-transition-group.js.map
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4746,25 +4830,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Tabs_style_css__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Tabs_style_css__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_preact_material_components_Tabs_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_preact_material_components_Tabs_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Typography_style_css__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Typography_style_css__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_preact_material_components_Typography_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_preact_material_components_Typography_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_preact_material_components_Theme_style_css__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_preact_material_components_Theme_style_css__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_preact_material_components_Theme_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_preact_material_components_Theme_style_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_css__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_css__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__app_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_preact_router__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7____ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Components_Fade_Fade_jsx__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Components_Pop_Pop_jsx__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Components_AppearFromRight_AppearFromRight_jsx__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Components_AppearFromBottom_AppearFromBottom_jsx__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_preact_async_route__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_preact_async_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_preact_async_route__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__style_css__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__style_css__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__style_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -4792,192 +4876,125 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var App = function (_Component) {
-	_inherits(App, _Component);
+  _inherits(App, _Component);
 
-	function App() {
-		_classCallCheck(this, App);
+  function App() {
+    _classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-	}
+    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+  }
 
-	_createClass(App, [{
-		key: 'closeDrawer',
-		value: function closeDrawer() {
-			this.drawer.MDComponent.open = false;
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				null,
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_6_preact_router__["a" /* default */],
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["b" /* FadeAnimation */], path: '/', component: function component(url, cb) {
-							cb({
-								component: __WEBPACK_IMPORTED_MODULE_8__Components_Fade_Fade_jsx__["a" /* default */]
-							});
-						} }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["c" /* PopAnimation */], path: '/pop', component: function component(url, cb) {
-							cb({
-								component: __WEBPACK_IMPORTED_MODULE_9__Components_Pop_Pop_jsx__["a" /* default */]
-							});
-						} }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["d" /* SlideLeft */], path: '/slide', component: function component(url, cb) {
-							cb({
-								component: __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__["a" /* default */]
-							});
-						} }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["e" /* PushAndSlide */], path: '/pushaway', component: function component(url, cb) {
-							cb({
-								component: __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__["a" /* default */]
-							});
-						} }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["f" /* AppearFromRightAnimation */], path: '/appearright', component: function component(url, cb) {
-							cb({
-								component: __WEBPACK_IMPORTED_MODULE_12__Components_AppearFromRight_AppearFromRight_jsx__["a" /* default */]
-							});
-						} }),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], { animator: __WEBPACK_IMPORTED_MODULE_7____["g" /* AppearFromBottomAnimation */], path: '/appearbottom', component: function component(url, cb) {
-							cb({
-								component: __WEBPACK_IMPORTED_MODULE_13__Components_AppearFromBottom_AppearFromBottom_jsx__["a" /* default */]
-							});
-						} })
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */],
-					{ className: 'demo-tabs', 'indicator-accent': true },
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/');
-							} },
-						'Fade'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/pop');
-							} },
-						'Pop'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/slide');
-							} },
-						'SlideLeft'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/pushaway');
-							} },
-						'Push Side'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/appearright');
-							} },
-						'SlideFromRight'
-					),
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						__WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
-						{ onClick: function onClick() {
-								__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/appearbottom');
-							} },
-						'SlideFromBottom'
-					)
-				)
-			);
-		}
-	}]);
+  _createClass(App, [{
+    key: 'closeDrawer',
+    value: function closeDrawer() {
+      this.drawer.MDComponent.open = false;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+        'div',
+        null,
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          __WEBPACK_IMPORTED_MODULE_6_preact_router__["a" /* default */],
+          null,
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], {
+            animator: __WEBPACK_IMPORTED_MODULE_7____["b" /* FadeAnimation */],
+            path: '/',
+            component: __WEBPACK_IMPORTED_MODULE_8__Components_Fade_Fade_jsx__["a" /* default */]
+          }),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], {
+            animator: __WEBPACK_IMPORTED_MODULE_7____["c" /* PopAnimation */],
+            path: '/pop',
+            component: __WEBPACK_IMPORTED_MODULE_9__Components_Pop_Pop_jsx__["a" /* default */]
+          }),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], {
+            animator: __WEBPACK_IMPORTED_MODULE_7____["d" /* SlideLeft */],
+            path: '/slide',
+            component: __WEBPACK_IMPORTED_MODULE_10__Components_Slide_Slide_jsx__["a" /* default */]
+          }),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], {
+            animator: __WEBPACK_IMPORTED_MODULE_7____["e" /* PushAndSlide */],
+            path: '/pushaway',
+            component: __WEBPACK_IMPORTED_MODULE_11__Components_PushAndSlide_PushAndSlide_jsx__["a" /* default */]
+          }),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], {
+            animator: __WEBPACK_IMPORTED_MODULE_7____["f" /* AppearFromRightAnimation */],
+            path: '/appearright',
+            component: __WEBPACK_IMPORTED_MODULE_12__Components_AppearFromRight_AppearFromRight_jsx__["a" /* default */]
+          }),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(__WEBPACK_IMPORTED_MODULE_7____["a" /* default */], {
+            animator: __WEBPACK_IMPORTED_MODULE_7____["g" /* AppearFromBottomAnimation */],
+            path: '/appearbottom',
+            component: __WEBPACK_IMPORTED_MODULE_13__Components_AppearFromBottom_AppearFromBottom_jsx__["a" /* default */]
+          })
+        ),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+          __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */],
+          { className: 'demo-tabs', 'indicator-accent': true },
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+            {
+              onClick: function onClick() {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/');
+              }
+            },
+            'Fade'
+          ),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+            {
+              onClick: function onClick() {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/pop');
+              }
+            },
+            'Pop'
+          ),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+            {
+              onClick: function onClick() {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/slide');
+              }
+            },
+            'SlideLeft'
+          ),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+            {
+              onClick: function onClick() {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/pushaway');
+              }
+            },
+            'Push Side'
+          ),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+            {
+              onClick: function onClick() {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/appearright');
+              }
+            },
+            'SlideFromRight'
+          ),
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
+            __WEBPACK_IMPORTED_MODULE_1_preact_material_components_Tabs__["a" /* default */].Tab,
+            {
+              onClick: function onClick() {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_preact_router__["b" /* route */])('/appearbottom');
+              }
+            },
+            'SlideFromBottom'
+          )
+        )
+      );
+    }
+  }]);
 
-	return App;
+  return App;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["render"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(App, null), document.querySelector('.app'));
-
-/***/ }),
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_preact__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var Slide = function (_Component) {
-	_inherits(Slide, _Component);
-
-	function Slide() {
-		_classCallCheck(this, Slide);
-
-		return _possibleConstructorReturn(this, (Slide.__proto__ || Object.getPrototypeOf(Slide)).apply(this, arguments));
-	}
-
-	_createClass(Slide, [{
-		key: 'render',
-		value: function render(props) {
-			return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-				'div',
-				{ className: 'page', style: 'background-color: DARKORCHID' },
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--display2' },
-						'Liquid route'
-					)
-				),
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-					'div',
-					null,
-					__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-						'div',
-						{ className: 'mdc-typography--title' },
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
-						),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])('br', null),
-						__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_preact__["h"])(
-							'div',
-							null,
-							'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis....'
-						)
-					)
-				)
-			);
-		}
-	}]);
-
-	return Slide;
-}(__WEBPACK_IMPORTED_MODULE_0_preact__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = Slide;
 
 /***/ })
 /******/ ]);

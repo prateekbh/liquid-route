@@ -1,4 +1,20 @@
-/*!
+.liquid-container{
+	position: relative;
+	display: block;
+}
+
+.liquid-pageholder{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100%;
+	will-change: transform, opacity;
+	z-index: 1;
+}
+
+.liquid-pageholder:first-child{
+	z-index: 2;
+}/*!
  Material Components for the web
  Copyright (c) 2017 Google Inc.
  License: Apache-2.0
@@ -1355,20 +1371,4 @@ a {
 
 .liquid-container{
 	transform-style: preserve-3d;
-}.liquid-container{
-	position: relative;
-	display: block;
-}
-
-.liquid-pageholder{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width:100%;
-	will-change: transform, opacity;
-	z-index: 1;
-}
-
-.liquid-pageholder:first-child{
-	z-index: 2;
 }

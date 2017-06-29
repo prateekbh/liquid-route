@@ -23,18 +23,17 @@ This mainly consist of the following animation objects
   import Router from 'preact-router';
   import LiquidRoute, {FadeAnimation, PopAnimation} from 'liquid-route';
   import 'liquid-route/style.css';
+  import Home from './Components/Home/Home.jsx';
   .
   .
   .
   return (
     <Router>
-      <LiquidRoute animator={FadeAnimation} path="/" component={(url, cb)=>{
-        return System.import('./Components/Home/Home.jsx').then(module => module.default);
-      }}/>
-      <LiquidRoute animator={PopAnimation} path="/profile" component={(url, cb)=>{
+      <LiquidRoute animator={FadeAnimation} path="/" component={Home}/>
+      <LiquidRoute animator={PopAnimation} path="/profile" getComponent={()=>{
         return System.import('./Components/Profile/Profile.jsx').then(module => module.default);
       }}/>
-      <LiquidRoute animator={PopAnimation} path="/profile/:pid" component={(url, cb)=>{
+      <LiquidRoute animator={PopAnimation} path="/profile/:pid" getComponent={()=>{
         return System.import('./Components/Profile/Profile.jsx').then(module => module.default);
       }}/>
     </Router>

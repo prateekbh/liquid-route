@@ -1,12 +1,12 @@
 {
   "name": "liquid-route",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "module": "index.js",
   "scripts": {
     "build": "npm run pretty && webpack -p",
-		"pretty": "./node_modules/.bin/prettier --single-quote --write **/*.js **/*.jsx",
+    "pretty": "./node_modules/.bin/prettier --single-quote --write **/*.js **/*.jsx",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -50,6 +50,7 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
+    "preact-async-route": "^2.0.0",
     "preact-css-transition-group": "^1.2.0",
     "preact-transition-group": "^1.1.1"
   }
