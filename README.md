@@ -6,7 +6,7 @@ This is a collection of route element and animation objects based on [`element.a
 
 This mainly consist of the following animation objects
 
-1. FaderAnimation: Next route will fade in and current will fade out.
+1. FadeAnimation: Next route will fade in and current will fade out.
 2. PopAnimation: Next route will pop from center and current route will implode.
 3. SlideLeftAnimation: Next route will slide from right while current one slides to left.
 4. PushNSlideAnimation: Routes will scale down and slide.
