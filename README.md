@@ -49,6 +49,9 @@ Both of the above ☝ methods return an object having the following properties
 a. animation: array of animation object used to play the entry/exit effect
 b. options: an object of options taken by [`element.animate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) api.
 
+## Browser Compatability
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate#Browser_compatibility) Web Animation is still in working draft status and only a few browsers support it, however there's a [polyfill](https://github.com/web-animations/web-animations-js) might come in handy.
+
 ## Inspiration
 While some basic animator objects come with the bundle, [here](https://tympanus.net/Development/PageTransitions/) is where the most of the transition inspiriation is drawn from.
 
