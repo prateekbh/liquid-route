@@ -5,9 +5,7 @@ export default class Fade extends Component {
     return (
       <div className="page" style="background-color: DARKORCHID">
         <div>
-          <div className="mdc-typography--display2">
-            Liquid route doig Fade
-          </div>
+          <div className="mdc-typography--display2">Liquid route doig Fade</div>
         </div>
         <div>
           <div className="mdc-typography--title">

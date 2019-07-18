@@ -5,9 +5,7 @@ export default class PushAndSlide extends Component {
     return (
       <div className="page" style="background-color: DARKORCHID">
         <div>
-          <div className="mdc-typography--display2">
-            Liquid route doing Pop
-          </div>
+          <div className="mdc-typography--display2">Liquid route doing Pop</div>
         </div>
         <div>
           <div className="mdc-typography--title">

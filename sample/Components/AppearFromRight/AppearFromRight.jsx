@@ -5,9 +5,7 @@ export default class AppearFromRight extends Component {
     return (
       <div className="page" style="background-color: PERU">
         <div>
-          <div className="mdc-typography--display2">
-            Liquid route
-          </div>
+          <div className="mdc-typography--display2">Liquid route</div>
         </div>
         <div>
           <div className="mdc-typography--title">

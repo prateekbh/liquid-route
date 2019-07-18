@@ -5,9 +5,7 @@ export default class AppearFromBottom extends Component {
     return (
       <div className="page" style="background-color: LightCoral">
         <div>
-          <div className="mdc-typography--display2">
-            Liquid route
-          </div>
+          <div className="mdc-typography--display2">Liquid route</div>
         </div>
         <div>
           <div className="mdc-typography--title">
@@ -25,7 +23,6 @@ export default class AppearFromBottom extends Component {
               laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
               vel eum iure reprehenderit qui in ea voluptate velit esse quam
               nihil molestiae consequatur.
-
             </div>
             <br />
             <br />

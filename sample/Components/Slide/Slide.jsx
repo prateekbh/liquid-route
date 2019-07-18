@@ -5,9 +5,7 @@ export default class Slide extends Component {
     return (
       <div className="page" style="background-color: DARKORCHID">
         <div>
-          <div className="mdc-typography--display2">
-            Liquid route
-          </div>
+          <div className="mdc-typography--display2">Liquid route</div>
         </div>
         <div>
           <div className="mdc-typography--title">
